@@ -13,9 +13,9 @@
       </ul>
 
       <ul>
-        <Button label="Login" class="button-login" />
+        <BtnGloobal label="Login" class="button-login" />
         <router-link id="router-link" to="/DadosDeContato">
-          <Button label="Abra sua conta" class="button-Abra-Sua-Conta" />
+          <BtnGloobal label="Abra sua conta" class="button-Abra-Sua-Conta" />
         </router-link>
       </ul>
     </div>
@@ -24,12 +24,12 @@
 
 
 <script>
-import Button from "./Button.vue";
+import BtnGloobal from "./BtnGloobal.vue";
 
 export default {
   name: "NavBar",
   components: {
-    Button,
+    BtnGloobal,
   },
 
   data() {

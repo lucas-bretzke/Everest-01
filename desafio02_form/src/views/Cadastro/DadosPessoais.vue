@@ -1,5 +1,5 @@
 <template>
-  <Cadastro
+  <CadastroSlot
     previousPageUrl="DadosDeContato"
     nextPageUrl="CadastroFinalizado"
     :current-state="2"
@@ -41,19 +41,19 @@
             </div>
           </section>
     </template>
-  </Cadastro>
+  </CadastroSlot>
 </template>
 
 <script>
 import ProgressionBar from "../../components/ProgressionBar.vue";
-import Cadastro from "./components/Cadastro";
+import CadastroSlot from "./components/CadastroSlot";
 
 
 export default {
   name: "DadosPessoais",
   components: {
     ProgressionBar,
-    Cadastro,
+    CadastroSlot,
   },
   data() {
     return {

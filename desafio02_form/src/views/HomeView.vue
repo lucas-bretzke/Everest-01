@@ -10,8 +10,8 @@
 
 <script>
 import NavBarHome from "../components/NavBarHome.vue";
-import Banner from "../components/Banner.vue";
-import Destaques from "../components/Destaques.vue";
+import Banner from "../components/BannerHome.vue";
+import Destaques from "../components/DestaquesDeHomeView.vue";
 import InvistaAgora from "../components/InvistaAgora.vue";
 import FooterHome from "../components/FooterHome.vue";
 

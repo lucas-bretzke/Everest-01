@@ -1,5 +1,5 @@
 <template>
-  <Cadastro
+  <CadastroSlot
     previousPageUrl="DadosPessoais"
     nextPageUrl="HomeView"
     :current-state="3"
@@ -15,21 +15,19 @@
         <p>clique no botão a baixo</p>
       </section>
     </template>
-  </Cadastro>
+  </CadastroSlot>
 </template>
 
 
 <script>
-import Button from "../../components/Button.vue";
 import ProgressionBar from "../../components/ProgressionBar.vue";
-import Cadastro from "../Cadastro/components/Cadastro";
+import CadastroSlot from "../Cadastro/components/CadastroSlot";
 
 export default {
   name: "CadastroFinalizado",
   components: {
-    Button,
     ProgressionBar,
-    Cadastro,
+    CadastroSlot,
   },
   data() {
     return {

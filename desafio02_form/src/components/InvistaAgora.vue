@@ -8,7 +8,7 @@
 
       <div>
         <router-link to="DadosDeContato">
-          <Button label="Abra sua Conta" />
+          <BtnGloobal label="Abra sua Conta" />
         </router-link>
       </div>
     </div>
@@ -17,12 +17,12 @@
 
 
 <script>
-import Button from "./Button.vue";
+import BtnGloobal from "./BtnGloobal.vue";
 
 export default {
   name: "InvestirEsobreVC",
   components: {
-    Button,
+    BtnGloobal,
   },
 };
 </script>
