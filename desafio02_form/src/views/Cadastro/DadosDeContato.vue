@@ -1,40 +1,77 @@
 <template>
   <CadastroSlot
-    previousPageUrl="HomeView"
+    previousPageUrl="/HomeView"
     nextPageUrl="DadosPessoais"
     :current-state="1"
   >
     <template #Center>
-      <section class="conteudo-principal">
+      <form
+        action=""
+        v-on:submit.prevent="checkForm"
+        class="conteudo-principal"
+      >
         <ProgressionBar :currentState="1" />
         <h1>Seja bem-vindo</h1>
         <h2>Dados de contato</h2>
 
         <div class=".container-global-inputs">
-          <label for="nome">Nome Completo</label>
-          <input type="text-box" placeholder="Digite seu nome" />
+          <label for="fullName">Nome Completo</label>
+          <input
+            v-model="fullName"
+            type="text-box"
+            placeholder="Digite seu nome"
+          />
         </div>
 
         <div class="container-global-inputs">
           <div class="container-inputs">
             <label for="email">E-mail</label>
-            <input type="text" name="emails" placeholder="Digite seu E-mail" />
+            <input
+              v-model="email"
+              name="email"
+              type="text-box"
+              placeholder="Digite seu E-mail"
+            />
 
             <label for="cpf">CPF</label>
-            <input id="strCPF" type="text" placeholder="<enter> para validar" />
+            <input
+              type="text-box"
+              v-mask="'###.###.###-##'"
+              v-model="cpf"
+              placeholder="Digite seu Cpf aqui"
+            />
           </div>
 
           <div class="container-inputs">
-            <label for="nome">Confirmar e-mail</label>
-            <input type="text" name="confirmEmails" placeholder="E-mail aqui" />
-            <label for="tel">Celular</label>
-            <input type="text" mask="'####-###'" v-model="myInputModel" />
+            <label for="confirmEml">Confirmar e-mail</label>
+            <input
+              v-model="confirmEml"
+              name="confirmEml"
+              type="text-box"
+              placeholder="E-mail aqui"
+            />
+            <label for="celular">Celular</label>
+            <input
+              type="text-box"
+              v-mask="'(##) ####-####'"
+              v-model="celular"
+              placeholder="Digite seu numero aqui"
+            />
           </div>
         </div>
 
         <div id="calendario">
-          <label for="">Data de nascimento</label>
-          <input type="date" />
+          <label>Data de nascimento</label>
+          <input
+            v-model="dataDeNascimento"
+            v-mask="'##/##/####'"
+            type="text-box"
+            placeholder="Data:"
+          />
+        </div>
+
+        <div id="container-errors">
+          <li v-for="error in errors" :key="error.$uid">Error! {{ error }}.</li>
         </div>
 
         <div class="opcionais-container">
@@ -56,7 +93,12 @@
           reprehenderit fugiat pariatur consectetur, quae nam est ratione
           voluptas debitis libero nesciunt!
         </p>
-      </section>
+        <router-link to="DadosPessoais">
+          <button v-on:click.prevent="checkForm" id="continuar-button">
+            Continuar
+          </button>
+        </router-link>
+      </form>
     </template>
   </CadastroSlot>
 </template>
@@ -65,21 +107,72 @@
 import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "./components/CadastroSlot";
 
+import useVuelidate from "@vuelidate/core";
+import { required, email, sameAs } from "@vuelidate/validators";
+
 export default {
   name: "DadosDeContato",
   components: {
     ProgressionBar,
     CadastroSlot,
   },
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       ImgDeCadastro: "/img/img-tela-cadastro.png",
-      myInputModel: "",
+      fullName: null,
+      email: null,
+      confirmEml: null,
+      cpf: null,
+      celular: null,
+      dataDeNascimento: null,
+      errors: [],
     };
   },
-  props: {},
+  validations() {
+    return {
+      fullName: { required },
+      email: { required, email },
+      confirmEml: { required, sameAsEmail: sameAs(this.email) },
+      cpf: { required },
+      celular: { required },
+      dataDeNascimento: { required },
+    };
+  },
+  methods: {
+    submitForm() {
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        alert("Formulário OK");
+      } else {
+        alert("Algo no formulário não corresponde aos requisitos");
+      }
+    },
+    checkForm() {
+      this.errors = [];
+      if (!this.fullName) {
+        this.errors.push("Nome não está preenchido");
+      }
+      if (!this.email) {
+        this.errors.push("E-mail não está preenchido");
+      }
+      if (!this.confirmEml) {
+        this.errors.push("Confirmar e-mail não está preenchido");
+      }
+      if (!this.cpf) {
+        this.errors.push("CPF não foi preenchido");
+      }
+      if (!this.celular) {
+        this.errors.push("Numero de Tel não foi preenchido");
+      }
+      if (!this.dataDeNascimento) {
+        this.errors.push("Data de nascimento não foi preenchida");
+      }
+    },
+  },
 };
 </script>
+
 
 
 <style>
@@ -164,6 +257,34 @@ input {
   border-radius: 4px;
   border: 1px solid #222;
   outline: none;
+}
+
+#continuar-button {
+  width: 100px;
+  padding: 10px;
+  margin: 10px 38%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #ed2f5d;
+  cursor: pointer;
+}
+
+#container-errors {
+  width: 300px;
+
+  margin-left: 440px;
+  position: fixed;
+
+  border-radius: 5px;
+  background-color: rgb(203, 203, 203);
+}
+
+#container-errors li {
+  padding: 5px;
+
+  color: red;
+  font-size: 12px;
 }
 </style>
 

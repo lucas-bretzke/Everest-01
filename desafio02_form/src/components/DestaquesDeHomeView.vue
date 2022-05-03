@@ -20,7 +20,7 @@
           voluptatibus quibusdam nisi. Temporibus esse<br />
           ipsa tempore aut at cum nisi quasi.
         </p>
-        <ButtonGloobal background="#ed2f5d" label="VER MAIS" />
+        <BtnGloobal background="#ed2f5d" label="VER MAIS" />
       </div>
     </div>
 

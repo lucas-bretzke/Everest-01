@@ -5,41 +5,41 @@
     :current-state="2"
   >
     <template #Center>
-          <section class="conteudo-principal">
-            <ProgressionBar :current-state="2" />
+      <section class="conteudo-principal">
+        <ProgressionBar :current-state="2" />
 
-            <h1>Dados pessoais</h1>
+        <h1>Dados pessoais</h1>
 
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-              facilis reprehenderit consequatur ad.
-            </p>
-            <div class="container-global-inputs">
-              <div class="container-inputs">
-                <label for="pais one reside">País onde reside</label>
-                <input
-                  type="email"
-                  name="nome"
-                  placeholder="Digite seu E-mail"
-                />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint facilis
+          reprehenderit consequatur ad.
+        </p>
+        <div class="container-global-inputs">
+          <div class="container-inputs">
+            <label for="pais one reside">País onde reside</label>
+            <input type="email" name="nome" placeholder="Digite seu E-mail" />
 
-                <label for="Cep">Cep</label>
-                <input type="" name="cpf" placeholder="Cpf" />
-              </div>
+            <label for="Cep">Cep</label>
+            <input type="" name="cpf" placeholder="Cpf" />
+          </div>
 
-              <div class="container-inputs">
-                <label for="Cidade">Cidade</label>
-                <input type="text" name="nome" placeholder="Confirmar e-mail" />
+          <div class="container-inputs">
+            <label for="Cidade">Cidade</label>
+            <input type="text" name="nome" placeholder="Confirmar e-mail" />
 
-                <label id="" for="nome">Endereço</label>
-                <input type="text" name="nome" placeholder="celular" />
-              </div>
-            </div>
-            <div id="container-global-inputs" class=".container-global-inputs">
-              <label id="label-numero" for="numero">Número</label>
-              <input type="text" placeholder="Digite seu nome" />
-            </div>
-          </section>
+            <label id="" for="nome">Endereço</label>
+            <input type="text" name="nome" placeholder="celular" />
+          </div>
+        </div>
+        <div id="container-global-inputs" class=".container-global-inputs">
+          <label id="label-numero" for="numero">Número</label>
+          <input type="text" placeholder="Digite seu nome" />
+        </div>
+
+        <router-link to="CadastroFinalizado">
+          <BtnGloobal label="Continuar" id="continuar-button" />
+        </router-link>
+      </section>
     </template>
   </CadastroSlot>
 </template>
@@ -47,13 +47,14 @@
 <script>
 import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "./components/CadastroSlot";
-
+import BtnGloobal from "../../components/BtnGloobal.vue";
 
 export default {
   name: "DadosPessoais",
   components: {
     ProgressionBar,
     CadastroSlot,
+    BtnGloobal,
   },
   data() {
     return {
@@ -77,5 +78,4 @@ p {
 #container-global-inputs {
   margin-top: 9px;
 }
-
 </style>

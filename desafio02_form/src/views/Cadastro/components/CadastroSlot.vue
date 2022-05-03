@@ -4,7 +4,7 @@
       <img
         id="seta-direcional-esquerda"
         src="/img/icon2.png"
-        :onClick="previousPage"
+        v-on:click="previousPage"
       />
       <h4 id="title-nav">FORMULÁRIO</h4>
     </nav>
@@ -12,7 +12,7 @@
     <main>
       <div id="center" class="centralizar-button">
         <slot name="Center" />
-        <button id="continuar-button"  :onClick="nextPage">Continuar</button>
+        <button id="continuar-button" v-on:click="nextPage">Continuar</button>
       </div>
 
       <img id="img-de-cadastro" :src="ImgDeCadastro" />
@@ -21,16 +21,19 @@
 </template>
 
 <script>
-
 export default {
   name: "CadastroSlot",
-  components: {
-  },
 
   props: {
     previousPageUrl: String,
     nextPageUrl: String,
     defaultProgressionBarState: Number,
+  },
+
+  data() {
+    return {
+      ImgDeCadastro: "/img/img-tela-cadastro.png",
+    };
   },
   methods: {
     nextPage: function () {
@@ -39,11 +42,6 @@ export default {
     previousPage: function () {
       this.$router.push(this.previousPageUrl);
     },
-  },
-  data() {
-    return {
-      ImgDeCadastro: "/img/img-tela-cadastro.png",
-    };
   },
 };
 </script>
@@ -78,18 +76,6 @@ main {
 .direction {
   flex-direction: column;
 }
-
-#continuar-button {
-  width: 100px;
-  padding: 10px;
-  margin: 0px 38%;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  background-color: #ed2f5d;
-  cursor: pointer;
-}
-
 .centralizar-button {
   align-items: center;
   justify-content: center;

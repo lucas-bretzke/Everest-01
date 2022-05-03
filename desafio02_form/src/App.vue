@@ -14,6 +14,8 @@
 }
 #router-link {
   background: none;
+  padding: 0px;
+  margin: 0px;
 }
 </style>
 
