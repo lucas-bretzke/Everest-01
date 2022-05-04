@@ -12,13 +12,13 @@ const routes = [
   },
   {
     path: '/DadosDeContato',
-    name: 'Dados De Contato',
+    name: 'DadosDeContato',
 
     component: () => import('../views/Cadastro/DadosDeContato')
   },
   {
     path: '/DadosPessoais',
-    name: 'Dados Pessoais',
+    name: 'DadosPessoais',
 
     component: () => import('../views/Cadastro/DadosPessoais')
   },

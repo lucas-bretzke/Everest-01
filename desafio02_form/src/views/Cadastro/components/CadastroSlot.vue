@@ -12,7 +12,7 @@
     <main>
       <div id="center" class="centralizar-button">
         <slot name="Center" />
-        <button id="continuar-button" v-on:click="nextPage">Continuar</button>
+        <!-- <button id="continuar-button" v-on:click="nextPage">Continuar</button> -->
       </div>
 
       <img id="img-de-cadastro" :src="ImgDeCadastro" />

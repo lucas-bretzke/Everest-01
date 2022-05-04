@@ -93,11 +93,9 @@
           reprehenderit fugiat pariatur consectetur, quae nam est ratione
           voluptas debitis libero nesciunt!
         </p>
-        <router-link to="DadosPessoais">
-          <button v-on:click.prevent="checkForm" id="continuar-button">
-            Continuar
-          </button>
-        </router-link>
+        <button v-on:click.prevent="checkForm" id="continuar-button">
+          Continuar
+        </button>
       </form>
     </template>
   </CadastroSlot>
@@ -133,7 +131,7 @@ export default {
     return {
       fullName: { required },
       email: { required, email },
-      confirmEml: { required, sameAsEmail: sameAs(this.email) },
+      confirmEml: { required, confirmEml: sameAs(this.email) },
       cpf: { required },
       celular: { required },
       dataDeNascimento: { required },
@@ -148,6 +146,7 @@ export default {
         alert("Algo no formulário não corresponde aos requisitos");
       }
     },
+
     checkForm() {
       this.errors = [];
       if (!this.fullName) {
@@ -155,9 +154,6 @@ export default {
       }
       if (!this.email) {
         this.errors.push("E-mail não está preenchido");
-      }
-      if (!this.confirmEml) {
-        this.errors.push("Confirmar e-mail não está preenchido");
       }
       if (!this.cpf) {
         this.errors.push("CPF não foi preenchido");
@@ -167,6 +163,19 @@ export default {
       }
       if (!this.dataDeNascimento) {
         this.errors.push("Data de nascimento não foi preenchida");
+      }
+      if (this.email != this.confirmEml) {
+        this.errors.push("Os campos de E-mail são diferentes");
+      }
+      if (
+        this.fullName &&
+        this.email &&
+        this.cpf &&
+        this.celular &&
+        this.dataDeNascimento &&
+        this.email === this.confirmEml
+      ) {
+        this.$router.push({ name: "DadosPessoais" });
       }
     },
   },
