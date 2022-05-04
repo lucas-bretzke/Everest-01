@@ -35,11 +35,18 @@
 
             <label for="cpf">CPF</label>
             <input
-              type="text-box"
+              id="cpfInput"
               v-mask="'###.###.###-##'"
               v-model="cpf"
+              @keyup.enter="verificarCpf"
+              type="text-box"
               placeholder="Digite seu Cpf aqui"
             />
+
+            <div v-show="!pendente" :style="messageType" class="msg-error-cpf">
+              <span v-if="valido"> CPF valido, parabens </span>
+              <span v-else>CPF inválido </span>
+            </div>
           </div>
 
           <div class="container-inputs">
@@ -50,7 +57,7 @@
               type="text-box"
               placeholder="E-mail aqui"
             />
-            <label for="celular">Celular</label>
+            <label for="celular">Telefone</label>
             <input
               type="text-box"
               v-mask="'(##) ####-####'"
@@ -93,7 +100,7 @@
           reprehenderit fugiat pariatur consectetur, quae nam est ratione
           voluptas debitis libero nesciunt!
         </p>
-        <button v-on:click.prevent="checkForm" id="continuar-button">
+        <button v-on:click="verificarCpf" id="continuar-button">
           Continuar
         </button>
       </form>
@@ -121,11 +128,21 @@ export default {
       fullName: null,
       email: null,
       confirmEml: null,
-      cpf: null,
       celular: null,
       dataDeNascimento: null,
       errors: [],
+
+      cpf: null,
+      pendente: true,
+      valido: false,
     };
+  },
+  computed: {
+    messageType() {
+      return {
+        color: this.valido ? "green" : "red",
+      };
+    },
   },
   validations() {
     return {
@@ -167,19 +184,47 @@ export default {
       if (this.email != this.confirmEml) {
         this.errors.push("Os campos de E-mail são diferentes");
       }
+      if (this.cpf != this.valido) {
+        this.errors.push("CPF inválido");
+      }
       if (
         this.fullName &&
         this.email &&
         this.cpf &&
         this.celular &&
         this.dataDeNascimento &&
-        this.email === this.confirmEml
+        this.email === this.confirmEml &&
+        this.cpf === this.valido
       ) {
         this.$router.push({ name: "DadosPessoais" });
       }
     },
+
+    verificarCpf() {
+      this.valido = validar(this.cpf);
+      this.pendente = false;
+    },
   },
 };
+
+const validar = (cpf) => checkAll(prepare(cpf));
+
+const notDig = (i) => ![".", "-", " "].includes(i);
+const prepare = (cpf) => cpf.trim().split("").filter(notDig).map(Number);
+const is11Len = (cpf) => cpf.length === 11;
+const notAllEquals = (cpf) => !cpf.every((i) => cpf[0] === i);
+const onlyNum = (cpf) => cpf.every((i) => !isNaN(i));
+
+const calcDig = (limit) => (a, i, idx) => a + i * (limit + 1 - idx);
+const somaDig = (cpf, limit) => cpf.slice(0, limit).reduce(calcDig(limit), 0);
+const resto11 = (somaDig) => 11 - (somaDig % 11);
+const zero1011 = (resto11) => ([10, 11].includes(resto11) ? 0 : resto11);
+
+const getDV = (cpf, limit) => zero1011(resto11(somaDig(cpf, limit)));
+const verDig = (pos) => (cpf) => getDV(cpf, pos) === cpf[pos];
+
+const checks = [is11Len, notAllEquals, onlyNum, verDig(9), verDig(10)];
+const checkAll = (cpf) => checks.map((f) => f(cpf)).every((r) => !!r);
 </script>
 
 
@@ -340,5 +385,9 @@ h5 {
 p {
   font-size: 13px;
   margin: 10px 0px;
+}
+
+.msg-error-cpf {
+  font-size: 12px;
 }
 </style>
