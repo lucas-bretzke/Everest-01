@@ -10,6 +10,20 @@ const routes = [
     name: 'HomeView',
     component: HomeView
   },
+
+  {
+    path: '/LoginEmail',
+    name: 'LoginEmail',
+
+    component: () => import('../views/Login/LoginEmail')
+  },
+{
+path: '/LoginPassword',
+name: 'LoginPassword',
+
+component: () => import('../views/Login/LoginPassword')
+},
+
   {
     path: '/DadosDeContato',
     name: 'DadosDeContato',

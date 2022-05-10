@@ -26,3 +26,18 @@ export default {
   },
 };
 </script>
+
+
+<style >
+#btn-teste {
+  width: 70px;
+  height: 40px;
+
+  padding: 10px;
+  margin: 10px;
+
+  color: white;
+
+  background-color: blue;
+}
+</style>
