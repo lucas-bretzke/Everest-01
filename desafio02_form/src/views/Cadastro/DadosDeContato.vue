@@ -14,7 +14,7 @@
         <h1>Seja bem-vindo</h1>
         <h2>Dados de contato</h2>
 
-        <div class=".container-global-inputs">
+        <div>
           <label for="fullName">Nome Completo</label>
           <input
             v-model="fullName"
@@ -23,7 +23,7 @@
           />
         </div>
 
-        <div class="container-global-inputs">
+        <div id="container-global-inputs">
           <div class="container-inputs">
             <label for="email">E-mail</label>
             <input
@@ -44,7 +44,7 @@
             />
 
             <div v-show="!pendente" :style="messageType" class="msg-error-cpf">
-              <span v-if="valido"> CPF valido, parabens </span>
+              <span v-if="valido"> CPF valido </span>
               <span v-else>CPF inválido </span>
             </div>
           </div>
@@ -69,12 +69,7 @@
 
         <div id="calendario">
           <label>Data de nascimento</label>
-          <input
-            v-model="dataDeNascimento"
-            v-mask="'##/##/####'"
-            type="text-box"
-            placeholder="Data:"
-          />
+          <input v-model="dataDeNascimento" type="date" />
         </div>
 
         <div id="container-errors">
@@ -100,7 +95,14 @@
           reprehenderit fugiat pariatur consectetur, quae nam est ratione
           voluptas debitis libero nesciunt!
         </p>
-        <button v-on:click="verificarCpf" id="continuar-button">
+
+        <button
+          id="continuar-button"
+          v-on:click="
+            verificarCpf();
+            checkForm();
+          "
+        >
           Continuar
         </button>
       </form>
@@ -155,14 +157,14 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-      this.v$.$validate();
-      if (!this.v$.$error) {
-        alert("Formulário OK");
-      } else {
-        alert("Algo no formulário não corresponde aos requisitos");
-      }
-    },
+    // submitForm() {
+    //   this.v$.$validate();
+    //   if (!this.v$.$error) {
+    //     alert("Formulário OK");
+    //   } else {
+    //     alert("Algo no formulário não corresponde aos requisitos");
+    //   }
+    // },
 
     checkForm() {
       this.errors = [];
@@ -184,17 +186,13 @@ export default {
       if (this.email != this.confirmEml) {
         this.errors.push("Os campos de E-mail são diferentes");
       }
-      if (this.cpf != this.valido) {
-        this.errors.push("CPF inválido");
-      }
       if (
         this.fullName &&
         this.email &&
-        this.cpf &&
         this.celular &&
         this.dataDeNascimento &&
         this.email === this.confirmEml &&
-        this.cpf === this.valido
+        this.valido
       ) {
         this.$router.push({ name: "DadosPessoais" });
       }
@@ -230,43 +228,6 @@ const checkAll = (cpf) => checks.map((f) => f(cpf)).every((r) => !!r);
 
 
 <style>
-#seta-direcional-esquerda {
-  width: 20px;
-  height: auto;
-  margin-left: 10px;
-}
-#navbar-cadastro {
-  width: 100%;
-  height: 44px;
-
-  display: flex;
-  align-items: center;
-
-  background-color: #ed2f5d;
-}
-
-#voltar {
-  border: none;
-
-  color: #fff;
-  background-color: transparent;
-}
-
-#title-nav {
-  margin-left: 44%;
-
-  color: #fff;
-}
-
-main {
-  display: flex;
-}
-
-#center {
-  align-items: center;
-  margin: 0px auto;
-}
-
 .conteudo-principal {
   max-width: 450px;
   min-width: 450px;
@@ -297,20 +258,6 @@ main {
   width: 48%;
   display: flex;
   flex-direction: column;
-}
-
-label {
-  margin-top: 15px;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 11px;
-  border-radius: 4px;
-  border: 1px solid #222;
-  outline: none;
 }
 
 #continuar-button {
@@ -348,6 +295,20 @@ input {
 #calendario {
   width: 48%;
   margin: 15px 0px 30px;
+}
+
+label {
+  margin-top: 15px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 11px;
+  border-radius: 4px;
+  border: 1px solid #222;
+  outline: none;
 }
 
 .checkbox-container {

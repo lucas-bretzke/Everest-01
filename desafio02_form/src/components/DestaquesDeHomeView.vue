@@ -77,7 +77,7 @@ export default {
   height: 500px;
 
   margin: 0px auto;
-  margin-top: 150px;
+  margin-bottom: 100px;
 
   display: flex;
 }
@@ -88,7 +88,7 @@ export default {
   height: 500px;
 
   margin: 0px auto;
-  margin-top: 130px;
+  margin-bottom: 130px;
 
   display: flex;
 }

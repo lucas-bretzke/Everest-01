@@ -5,7 +5,7 @@
     :current-state="3"
   >
     <template #Center>
-      <section class="conteudo-principal">
+      <section id="conteudo-principal">
         <ProgressionBar :current-state="3" />
 
         <img id="OkFinalizado-img" :src="OkFinalizado" alt="" />
@@ -13,10 +13,11 @@
         <h2>Finalizado</h2>
         <p>Caso deseja retornar á página inicial</p>
         <p>clique no botão a baixo</p>
+
+        <router-link to="HomeView">
+          <BtnGloobal label="Continuar" id="continuar-button" />
+        </router-link>
       </section>
-      <router-link to="HomeView">
-        <BtnGloobal label="Continuar" id="continuar-button" />
-      </router-link>
     </template>
   </CadastroSlot>
 </template>
@@ -32,7 +33,7 @@ export default {
   components: {
     ProgressionBar,
     CadastroSlot,
-    BtnGloobal
+    BtnGloobal,
   },
   data() {
     return {
@@ -53,6 +54,17 @@ section {
   width: 45px;
   margin-top: 20vh;
   margin-bottom: 10px;
+}
+
+#continuar-button {
+  margin: 50px auto;
+  padding: 10px 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.444);
+  transition: 0.5s;
+}
+
+#continuar-button:hover {
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.444);
 }
 
 img,
