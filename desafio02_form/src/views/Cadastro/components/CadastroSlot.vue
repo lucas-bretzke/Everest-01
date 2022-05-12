@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <nav id="navbar-cadastro">
       <img
         id="seta-direcional-esquerda"
@@ -9,15 +9,15 @@
       <h4 id="title-nav">FORMULÁRIO</h4>
     </nav>
 
-    <main>
-      <div id="center" class="centralizar-button">
+    <section>
+      <div id="center">
         <slot name="Center" />
         <!-- <button id="continuar-button" v-on:click="nextPage">Continuar</button> -->
       </div>
 
       <img id="img-de-cadastro" :src="ImgDeCadastro" />
-    </main>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -50,7 +50,18 @@ export default {
 
 
 <style scoped>
+main {
+  width: 100vw;
+  height: 100vh;
+
+  max-width: 100vw;
+  max-height: 100vh;
+
+  position: fixed;
+  box-sizing: border-box;
+}
 #center {
+  max-height: 100vh;
   align-items: center;
   margin: 0px auto;
 }
@@ -78,15 +89,11 @@ export default {
   color: #fff;
 }
 
-main {
+section {
   display: flex;
 }
 .direction {
   flex-direction: column;
-}
-.centralizar-button {
-  align-items: center;
-  justify-content: center;
 }
 
 #img-de-cadastro {

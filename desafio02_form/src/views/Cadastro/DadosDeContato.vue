@@ -274,9 +274,6 @@ const checkAll = (cpf) => checks.map((f) => f(cpf)).every((r) => !!r);
 #container-errors {
   width: 300px;
 
-  margin-left: 440px;
-  position: fixed;
-
   border-radius: 5px;
   background-color: rgb(203, 203, 203);
 }
