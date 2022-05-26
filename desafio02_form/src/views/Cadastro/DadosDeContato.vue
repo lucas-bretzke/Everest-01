@@ -1,7 +1,7 @@
 <template>
   <CadastroSlot
     previousPageUrl="/HomeView"
-    nextPageUrl="DadosPessoais"
+    nextPageUrl="/DadosPessoais"
     :current-state="1"
   >
     <template #Center>
@@ -18,6 +18,7 @@
           <label for="fullName">Nome Completo</label>
           <input
             v-model="fullName"
+            required
             type="text-box"
             placeholder="Digite seu nome"
           />
@@ -29,6 +30,7 @@
             <input
               v-model="email"
               name="email"
+              required
               type="text-box"
               placeholder="Digite seu E-mail"
             />
@@ -38,6 +40,7 @@
               id="cpfInput"
               v-mask="'###.###.###-##'"
               v-model="cpf"
+              required
               @keyup.enter="verificarCpf"
               type="text-box"
               placeholder="Digite seu Cpf aqui"
@@ -53,6 +56,7 @@
             <label for="confirmEml">Confirmar e-mail</label>
             <input
               v-model="confirmEml"
+              required
               name="confirmEml"
               type="text-box"
               placeholder="E-mail aqui"
@@ -61,7 +65,8 @@
             <input
               type="text-box"
               v-mask="'(##) ####-####'"
-              v-model="celular"
+              v-model="cellphone"
+              required
               placeholder="Digite seu numero aqui"
             />
           </div>
@@ -69,7 +74,7 @@
 
         <div id="calendario">
           <label>Data de nascimento</label>
-          <input v-model="dataDeNascimento" type="date" />
+          <input v-model="birthdate" required type="date" />
         </div>
 
         <div id="container-errors">
@@ -81,12 +86,13 @@
           <h5>Mattis semper dolor, elit pretiun nulla.</h5>
 
           <div class="checkbox-container">
-            <input id="checkbox" type="checkbox" />
+            <input v-model="checkboxEmail" class="checkbox" type="checkbox" />
             <span>Email ou SMS</span>
           </div>
 
           <div class="checkbox-container">
-            <input id="checkbox" type="checkbox" /> <span>Whatsapp</span>
+            <input class="checkbox" type="checkbox" />
+            <span>Whatsapp</span>
           </div>
         </div>
 
@@ -127,18 +133,20 @@ export default {
   data() {
     return {
       ImgDeCadastro: "/img/img-tela-cadastro.png",
-      fullName: null,
-      email: null,
-      confirmEml: null,
-      celular: null,
-      dataDeNascimento: null,
+      fullName: "",
+      email: "",
+      confirmEml: "",
+      cellphone: "",
+      birthdate: "",
+      checkboxEmail: false,
       errors: [],
 
-      cpf: null,
+      cpf: "",
       pendente: true,
       valido: false,
     };
   },
+
   computed: {
     messageType() {
       return {
@@ -152,49 +160,41 @@ export default {
       email: { required, email },
       confirmEml: { required, confirmEml: sameAs(this.email) },
       cpf: { required },
-      celular: { required },
-      dataDeNascimento: { required },
+      cellphone: { required },
+      birthdate: { required },
     };
   },
-  methods: {
-    // submitForm() {
-    //   this.v$.$validate();
-    //   if (!this.v$.$error) {
-    //     alert("Formulário OK");
-    //   } else {
-    //     alert("Algo no formulário não corresponde aos requisitos");
-    //   }
-    // },
 
+  methods: {
     checkForm() {
       this.errors = [];
-      if (!this.fullName) {
-        this.errors.push("Nome não está preenchido");
-      }
-      if (!this.email) {
-        this.errors.push("E-mail não está preenchido");
-      }
-      if (!this.cpf) {
-        this.errors.push("CPF não foi preenchido");
-      }
-      if (!this.celular) {
-        this.errors.push("Numero de Tel não foi preenchido");
-      }
-      if (!this.dataDeNascimento) {
-        this.errors.push("Data de nascimento não foi preenchida");
-      }
+
       if (this.email != this.confirmEml) {
         this.errors.push("Os campos de E-mail são diferentes");
       }
       if (
         this.fullName &&
         this.email &&
-        this.celular &&
-        this.dataDeNascimento &&
+        this.cellphone &&
+        this.birthdate &&
         this.email === this.confirmEml &&
         this.valido
       ) {
-        this.$router.push({ name: "DadosPessoais" });
+        var toSendDice = [
+          this.fullName,
+          this.email,
+          this.cpf,
+          this.cellphone,
+          this.birthdate,
+          this.checkboxEmail,
+        ];
+        
+        this.$router.push({
+          name: "DadosPessoais",
+          params: {
+            toSendDice,
+          },
+        });
       }
     },
 
@@ -275,13 +275,13 @@ const checkAll = (cpf) => checks.map((f) => f(cpf)).every((r) => !!r);
   width: 300px;
 
   border-radius: 5px;
+  text-decoration: none;
+
   background-color: rgb(203, 203, 203);
 }
 
 #container-errors li {
   padding: 5px;
-
-  color: red;
   font-size: 12px;
 }
 </style>
@@ -314,7 +314,7 @@ input {
   margin-bottom: 10px;
 }
 
-.checkbox-container #checkbox {
+.checkbox-container .checkbox {
   width: auto;
 }
 

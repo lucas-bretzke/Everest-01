@@ -2,7 +2,7 @@
   <main>
     <nav id="navbar-cadastro">
       <img
-        id="seta-direcional-esquerda"
+        id="setaDirectionLeft"
         src="/img/icon2.png"
         v-on:click="previousPage"
       />
@@ -25,9 +25,17 @@ export default {
   name: "CadastroSlot",
 
   props: {
-    previousPageUrl: String,
-    nextPageUrl: String,
-    defaultProgressionBarState: Number,
+    previousPageUrl: {
+      type: String,
+      default: "",
+    },
+    nextPageUrl:{
+      type: String,
+      default: "",
+    },
+    defaultProgressionBarState: {
+      type: Number,
+    },
   },
 
   data() {
@@ -76,12 +84,16 @@ main {
   background-color: #ed2f5d;
 }
 
-#seta-direcional-esquerda {
+#setaDirectionLeft {
   width: 20px;
   height: auto;
   margin-left: 10px;
 
+  border-radius: 10px;
   cursor: pointer;
+}
+#setaDirectionLeft:hover {
+  background-color: rgba(255, 255, 255, 0.32);
 }
 
 #title-nav {
@@ -132,14 +144,6 @@ input {
   flex-direction: column;
 }
 
-#img-de-cadastro {
-  width: auto;
-  height: calc(100vh - 44px);
-
-  padding: 0px;
-  margin: 0px;
-  margin-right: 0px;
-}
 
 #container-global-inputs {
   width: 100%;
