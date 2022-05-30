@@ -5,6 +5,9 @@
 </template>
 
 <style>
+:root {
+  --bg-color: #ed2f5d;
+}
 * {
   padding: 0px;
   margin: 0px;
