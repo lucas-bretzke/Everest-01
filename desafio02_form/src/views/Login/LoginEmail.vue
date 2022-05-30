@@ -1,5 +1,6 @@
 <template>
   <main id="main--login">
+    <btnReturn :route="HomeView"/>
     <div class="container-logo-login">
       <img :src="logo" class="logo-warren-login" />
     </div>
@@ -30,8 +31,13 @@
 
 
 <script>
+import btnReturn from "../../components/btnReturn";
+
 export default {
   name: "LoginEmail",
+  components: {
+    btnReturn,
+  },
   data() {
     return {
       logo: "/img/logo-warren-loginView.png",
