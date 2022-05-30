@@ -117,17 +117,50 @@ export default {
   },
 
   props: {
-    fullName: String,
-    cellphone: String,
-    cpf: String,
-    email: String,
-    birthdate: String,
-    country: String,
-    city: String,
-    cep: String,
-    address: String,
-    number: String,
-    showEmailIcon: String,
+    fullName: {
+      type: String,
+      default: "",
+    },
+    cellphone: {
+      type: String,
+      default: "",
+    },
+    cpf: {
+      type: String,
+      default: "",
+    },
+    email: {
+      type: String,
+      default: "",
+    },
+    birthdate: {
+      type: String,
+      default: "",
+    },
+    country: {
+      type: String,
+      default: "",
+    },
+    city: {
+      type: String,
+      default: "",
+    },
+    cep: {
+      type: String,
+      default: "",
+    },
+    address: {
+      type: String,
+      default: "",
+    },
+    number: {
+      type: String,
+      default: "",
+    },
+    showEmailIcon: {
+      type: String,
+      default: "",
+    },
   },
   emits: ["hfullName"],
   methods: {

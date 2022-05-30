@@ -26,7 +26,7 @@
 <script>
 import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "../Cadastro/components/CadastroSlot";
-import BtnGloobal from "../../components/BtnGloobal.vue";
+import BtnGloobal from "../../components/BtnGlobal.vue";
 
 export default {
   name: "CadastroFinalizado",

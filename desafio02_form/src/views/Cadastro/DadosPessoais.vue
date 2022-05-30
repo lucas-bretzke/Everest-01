@@ -136,6 +136,7 @@ export default {
     },
     showModal() {
       this.show_modal = true;
+      console.log(this.$route.params.toSendDice);
     },
     closeModal() {
       this.show_modal = false;

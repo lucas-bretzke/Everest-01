@@ -3,8 +3,7 @@
     <div class="nav-bar-model">
       <h5>{{ title }}</h5>
       <button class="btn-fechar-modal" v-on:click="onLeftButtonClick">
-        X
-      <!-- <font-awesome-icon icon="fa-regular fa-xmark" /> -->
+        <font-awesome-icon icon="fa-solid fa-xmark" />
       </button>
     </div>
 
@@ -29,9 +28,14 @@
 export default {
   name: "BaseModal",
   props: {
-    leftButtonTitle: String,
-    rightButtonTitle: String,
-    title: String,
+    leftButtonTitle: {
+      type: String,
+      default: '',
+    },
+    rightButtonTitle: {
+      type: String,
+    },
+    title: { type: String },
   },
   data() {
     return {
@@ -72,7 +76,7 @@ export default {
   position: fixed;
   margin-left: 85%;
 
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: rgb(95, 95, 95);
 
@@ -81,7 +85,7 @@ export default {
   cursor: pointer;
 }
 .btn-fechar-modal:hover {
-  font-size: 23px;
+  font-size: 24px;
 }
 
 .btns-saida-modal {

@@ -25,9 +25,17 @@ export default {
   name: "CadastroSlot",
 
   props: {
-    previousPageUrl: String,
-    nextPageUrl: String,
-    defaultProgressionBarState: Number,
+    previousPageUrl: {
+      type: String,
+      default: "",
+    },
+    nextPageUrl:{
+      type: String,
+      default: "",
+    },
+    defaultProgressionBarState: {
+      type: Number,
+    },
   },
 
   data() {
