@@ -20,7 +20,7 @@
           voluptatibus quibusdam nisi. Temporibus esse<br />
           ipsa tempore aut at cum nisi quasi.
         </p>
-        <BtnGloobal background="#ed2f5d" label="VER MAIS" />
+        <BtnGlobal background="#ed2f5d" label="VER MAIS" class="button" />
       </div>
     </div>
 
@@ -42,7 +42,7 @@
           voluptatibus quibusdam nisi. Temporibus esse<br />
           ipsa tempore aut at cum nisi quasi.
         </p>
-        <BtnGloobal background="#ed2f5d" label="VER MAIS" />
+        <BtnGlobal background="#ed2f5d" label="VER MAIS" class="button" />
       </div>
 
       <img :src="ChrisGardner" class="--img--ChrisGardner" />
@@ -52,12 +52,12 @@
 
 
 <script>
-import BtnGloobal from "./BtnGloobal.vue";
+import BtnGlobal from "./btnGlobal.vue";
 
 export default {
   name: "DestaquesDeHomeView",
   components: {
-    BtnGloobal,
+    BtnGlobal,
   },
   data() {
     return {
@@ -127,6 +127,11 @@ export default {
   text-align: right;
 }
 
+.button:hover {
+  transition: 0.2s;
+  font-size: 13px;
+}
+
 h1 {
   font-size: 42px;
   padding: 0px 0px 40px;
@@ -137,7 +142,7 @@ p {
 }
 
 .linha {
-  width: calc(120% - 12vh);
+  width: calc(120% - 10vh);
   border-bottom: 2px solid #ed2f5d;
 }
 </style>

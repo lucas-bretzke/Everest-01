@@ -6,15 +6,18 @@
 export default {
   name: "BtnGloobal",
   props: {
-    label: String,
-    background: String,
-    pdng: Number,
-    String,
+    label: {
+      type: String,
+      default: "",
+    },
+    background: {
+      type: String,
+      default: "",
+    },
   },
   get computedStyle() {
     return {
       background: this.background,
-      padg: this.padg,
     };
   },
 };
@@ -25,14 +28,15 @@ button {
   padding: 22px 25px;
 
   font-size: 12px;
+  font-weight: bold;
   color: white;
 
   border: none;
   border-radius: 7px;
 
-  transition: 1s;
+  transition: 1;
   cursor: pointer;
 
-  background-color: #2f2f33d5;
+  background-color: #2f2f33;
 }
 </style>
