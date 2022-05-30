@@ -1,27 +1,36 @@
 <template>
   <div class="container-banner">
     <div class="center">
-      <h1>Quer investir</h1>
-      <h1>seu dinheiro?</h1>
-      <h1>Abra sua conta.</h1>
-      <h1>É grátis.</h1>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam ips</p>
-
-      <router-link to="DadosDeContato">
-        <BtnGloobal label="Começar agora" class="button-cadastrar" />
-      </router-link>
+      <div class="contentText">
+        <h1>Quer investir</h1>
+        <h1>seu dinheiro?</h1>
+        <h1>Abra sua conta.</h1>
+        <h1>É grátis.</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <router-link to="DadosDeContato">
+          <BtnGlobal label="Comece agora" class="button-cadastrar" />
+        </router-link>
+      </div>
+      <div class="contentImg">
+        <img :src="imgCelular" alt="" />
+      </div>
     </div>
   </div>
 </template>
 
 
 <script>
-import BtnGloobal from "./BtnGloobal.vue";  
+import BtnGlobal from "./btnGlobal.vue";
 
 export default {
   name: "BannerHome",
   components: {
-    BtnGloobal,
+    BtnGlobal,
+  },
+  data() {
+    return {
+      imgCelular: "/img/celular.png",
+    };
   },
 };
 </script>
@@ -30,44 +39,46 @@ export default {
 <style scoped>
 .container-banner {
   width: 100%;
-  height: calc(100vh - 56px);
+  height: 730px;
 
+  padding: 0px;
   margin: 0px;
   margin-bottom: 130px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
 
-  background-color: #6e6e6e;
+  background-color: #ed2f5d;
 }
 .center {
-  min-width: 73%;
-  max-width: 73%;
+  width: 78%;
+  max-width: 1200px;
 
+  padding: 0px;
   margin: 0px auto;
 
-  background-color: #6e6e6e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contentText,
+.contentImg {
+  width: 50%;
+}
+.button-cadastrar {
+  font-size: 17px;
+  font-weight: bold;
+  padding: 20px 40px;
+}
+.button-cadastrar:hover {
+  transition: .2s;
+  box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.294);
 }
 h1 {
-  font-size: 70px;
+  font-size: 69px;
   color: white;
 }
 p {
   margin: 13px 0px 35px;
   color: white;
-}
-
-.ButtonGloobal-cadastrar {
-  padding: 20px 40px;
-
-  position: inherit;
-
-  font-size: 17px;
-  transition: 0.1s;
-}
-
-.ButtonGloobal-cadastrar:hover {
-  font-size: 19px;
 }
 </style>
