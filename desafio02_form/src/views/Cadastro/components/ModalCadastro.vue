@@ -119,47 +119,36 @@ export default {
   props: {
     fullName: {
       type: String,
-      default: "",
     },
     cellphone: {
       type: String,
-      default: "",
     },
     cpf: {
       type: String,
-      default: "",
     },
     email: {
       type: String,
-      default: "",
     },
     birthdate: {
       type: String,
-      default: "",
     },
     country: {
       type: String,
-      default: "",
     },
     city: {
       type: String,
-      default: "",
     },
     cep: {
       type: String,
-      default: "",
     },
     address: {
       type: String,
-      default: "",
     },
     number: {
       type: String,
-      default: "",
     },
     showEmailIcon: {
       type: String,
-      default: "",
     },
   },
   emits: ["hfullName"],
@@ -247,7 +236,7 @@ span {
   font-weight: bold;
 }
 .containt-icon-mssg {
-align-items: center;
+  align-items: center;
 }
 
 .icon {

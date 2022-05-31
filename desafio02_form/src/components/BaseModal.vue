@@ -30,7 +30,6 @@ export default {
   props: {
     leftButtonTitle: {
       type: String,
-      default: '',
     },
     rightButtonTitle: {
       type: String,
