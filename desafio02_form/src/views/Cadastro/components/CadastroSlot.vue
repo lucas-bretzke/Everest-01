@@ -1,10 +1,10 @@
 <template>
   <main>
     <nav id="navbar-cadastro">
-      <img
-        id="setaDirectionLeft"
-        src="/img/icon2.png"
+      <font-awesome-icon
+        icon="fa-solid fa-arrow-left"
         v-on:click="previousPage"
+        class="ic-arrow-left"
       />
       <h4 id="title-nav">FORMULÁRIO</h4>
     </nav>
@@ -15,7 +15,11 @@
         <!-- <button id="continuar-button" v-on:click="nextPage">Continuar</button> -->
       </div>
 
-      <img id="img-de-cadastro" :src="ImgDeCadastro" />
+      <img
+        id="img-de-cadastro"
+        :src="ImgDeCadastro"
+        alt="Imagem de uma mulher segurando um celular"
+      />
     </section>
   </main>
 </template>
@@ -29,7 +33,7 @@ export default {
       type: String,
       default: "",
     },
-    nextPageUrl:{
+    nextPageUrl: {
       type: String,
       default: "",
     },
@@ -84,15 +88,17 @@ main {
   background-color: #ed2f5d;
 }
 
-#setaDirectionLeft {
-  width: 20px;
-  height: auto;
+.ic-arrow-left {
+  width: 22px;
+  height: 22px;
+
+  padding: 5px;
   margin-left: 10px;
 
-  border-radius: 10px;
+  border-radius: 50%;
   cursor: pointer;
 }
-#setaDirectionLeft:hover {
+.ic-arrow-left:hover {
   background-color: rgba(255, 255, 255, 0.32);
 }
 
@@ -143,7 +149,6 @@ input {
   display: flex;
   flex-direction: column;
 }
-
 
 #container-global-inputs {
   width: 100%;

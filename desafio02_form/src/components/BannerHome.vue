@@ -12,7 +12,10 @@
         </router-link>
       </div>
       <div class="contentImg">
-        <img :src="imgCelular" alt="" />
+        <img
+          :src="imgCelular"
+          alt="Imagem mostrando a tela home do aplicativo de investimentos da Warren em um celular"
+        />
       </div>
     </div>
   </div>
@@ -70,7 +73,7 @@ export default {
   padding: 20px 40px;
 }
 .button-cadastrar:hover {
-  transition: .2s;
+  transition: 0.2s;
   box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.294);
 }
 h1 {

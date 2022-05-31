@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="center-destaque01">
-      <img :src="SteveJobs" class="--img--steve" />
+      <img
+        :src="SteveJobs"
+        class="--img--steve"
+        alt="Imagem mostrando o a fisonomia do 
+fundador da Apple Steve Jobs"
+      />
 
       <div class="descricao-steve">
         <h1>Lorem ipsum</h1>
@@ -45,7 +50,11 @@
         <BtnGlobal background="#ed2f5d" label="VER MAIS" class="button" />
       </div>
 
-      <img :src="ChrisGardner" class="--img--ChrisGardner" />
+      <img
+        :src="ChrisGardner"
+        class="--img--ChrisGardner"
+        alt="Imagem mostrando a fisonomia do grande empresário norte-americano Christian Grandne"
+      />
     </div>
   </div>
 </template>
