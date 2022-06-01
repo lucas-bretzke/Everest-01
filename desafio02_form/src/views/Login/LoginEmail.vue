@@ -1,6 +1,6 @@
 <template>
   <main id="main--login">
-    <btnReturn :route="HomeView"/>
+    <btnReturn :route="HomeView" />
     <div class="container-logo-login">
       <img :src="logo" class="logo-warren-login" />
     </div>
@@ -8,16 +8,18 @@
     <div class="content">
       <h2 class="title-login">Acessar minha conta</h2>
       <label class=".label-Email-Password" for="E-mail">E-mail</label>
+
       <div class="container-input-icon">
-        <h3>IC</h3>
+        <font-awesome-icon icon="fa-regular fa-envelope" class="ic-email" />
         <input
           class="input-email-senha"
           type="e-mail"
           placeholder="Informe o e-mail"
         />
       </div>
+
       <router-link to="LoginPassword">
-        <button class="button-continuar-login">CONTINUAR</button>
+        <button class="button-continuar-login">Continuar</button>
       </router-link>
 
       <div id="linha-pg-login"></div>
@@ -47,7 +49,7 @@ export default {
 </script>
 
 
-<style>
+<style  scoped>
 #main--login {
   display: flex;
 }
@@ -88,11 +90,11 @@ export default {
   display: flex;
   align-items: center;
   padding: 0px 20px;
-
+  border: solid 1px black;
   border-radius: 5px;
-  border: none;
   background-color: rgba(238, 238, 238, 0.767);
 }
+
 .input-email-senha {
   width: 100%;
 
@@ -102,6 +104,11 @@ export default {
 
   outline: none;
   background-color: transparent;
+}
+
+.ic-email {
+  width: 21px;
+  height: 21px;
 }
 
 .button-continuar-login {
@@ -115,15 +122,14 @@ export default {
   color: rgb(255, 255, 255);
 
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
 
   cursor: pointer;
-  transition: 0.4s;
   background-color: #ed2f5d;
 }
 
 .button-continuar-login:hover {
-  opacity: 0.9;
+  transition: 0.2s;
   font-size: 18px;
   padding: 29px 34px;
 }

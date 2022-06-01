@@ -34,6 +34,7 @@
               type="text-box"
               placeholder="Digite seu E-mail"
             />
+            <font-awesome-icon icon="fa-regular fa-envelope" class="ic-email" />
 
             <label for="cpf">CPF</label>
             <input
@@ -61,6 +62,8 @@
               type="text-box"
               placeholder="E-mail aqui"
             />
+            <font-awesome-icon icon="fa-regular fa-envelope" class="ic-email" />
+
             <label for="celular">Telefone</label>
             <input
               type="text-box"
@@ -188,7 +191,7 @@ export default {
           this.birthdate,
           this.checkboxEmail,
         ];
-        
+
         this.$router.push({
           name: "DadosPessoais",
           params: {
@@ -204,8 +207,6 @@ export default {
     },
   },
 };
-// let teste02 = this.$ref.checkboxWhatsapp;
-// let teste02 = document.getElementById("checkboxWhatsapp");
 
 const validar = (cpf) => checkAll(prepare(cpf));
 
@@ -323,6 +324,14 @@ input {
 .checkbox-container span {
   font-size: 12px;
   margin-left: 10px;
+}
+
+.ic-email {
+  position: fixed;
+  width: 17px;
+  height: 17px;
+  margin-left: 11%;
+  margin-top: 2.5%;
 }
 
 h1 {
