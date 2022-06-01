@@ -28,7 +28,7 @@
             />
 
             <label for="Cep">Cep</label>
-            <input v-model="cep" type="" name="cpf" placeholder="Cpf" />
+            <input v-model="cep"  name="cpf" placeholder="Cpf" />
           </div>
 
           <div class="container-inputs">

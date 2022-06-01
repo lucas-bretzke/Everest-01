@@ -2,7 +2,7 @@
   <nav>
     <div class="center">
       <router-link id="router-link" to="HomeView">
-        <img :src="LogoWarren" alt="logo" />
+        <img :src="LogoWarren" alt="logo da Warren" />
       </router-link>
 
       <ul>
@@ -15,16 +15,16 @@
             />
           </p>
           <ul>
-            <li><a href="">Carteiras</a></li>
-            <li><a href="">Bolsa</a></li>
-            <li><a href="">Home Broker</a></li>
+            <li><p>Carteiras</p></li>
+            <li><p>Bolsa</p></li>
+            <li><p>Home Broker</p></li>
           </ul>
         </li>
       </ul>
 
-      <a href="">Quanto custa</a>
-      <a href="">Sobre</a>
-      <a href="">Megazine</a>
+      <a>Quanto custa</a>
+      <a>Sobre</a>
+      <a>Megazine</a>
       <router-link id="router-link" to="LoginEmail">
         <BtnGlobal label="Login" class="button-login" />
       </router-link>
@@ -169,10 +169,6 @@ ul li ul:hover {
 p {
   display: flex;
 }
-/* ------------------------------------------------------------------ */
-
-
-
 
 ul li ul {
   width: 250px;
@@ -184,16 +180,8 @@ ul li ul {
   border-radius: 10px;
 }
 
-ul li a {
-  color: #2f2f33;
-}
-
-ul li ul li a {
+ul li ul li p {
   padding: 10px 0px;
-}
-
-ul li ul li a:hover {
-  background-color: transparent;
   color: #2f2f33;
 }
 </style>

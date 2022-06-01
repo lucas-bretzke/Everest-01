@@ -8,7 +8,7 @@
       <section id="conteudo-principal">
         <ProgressionBar :current-state="3" />
 
-        <img id="OkFinalizado-img" :src="OkFinalizado" alt="" />
+        <img id="OkFinalizado-img" :src="OkFinalizado" />
         <h1>Cadastro</h1>
         <h2>Finalizado</h2>
         <p>Caso deseja retornar á página inicial</p>
