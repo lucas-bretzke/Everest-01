@@ -31,11 +31,9 @@ export default {
   props: {
     previousPageUrl: {
       type: String,
-      default: "",
     },
     nextPageUrl: {
       type: String,
-      default: "",
     },
     defaultProgressionBarState: {
       type: Number,
@@ -48,10 +46,10 @@ export default {
     };
   },
   methods: {
-    nextPage: function () {
+    nextPage () {
       this.$router.push(this.nextPageUrl);
     },
-    previousPage: function () {
+    previousPage() {
       this.$router.push(this.previousPageUrl);
     },
   },
