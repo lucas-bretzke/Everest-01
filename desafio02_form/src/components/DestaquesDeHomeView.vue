@@ -61,7 +61,7 @@ fundador da Apple Steve Jobs"
 
 
 <script>
-import BtnGlobal from "./btnGlobal.vue";
+import BtnGlobal from "./BtnGlobal.vue";
 
 export default {
   name: "DestaquesDeHomeView",
