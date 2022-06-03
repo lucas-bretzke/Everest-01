@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="center-destaque01">
-      <img :src="SteveJobs" class="--img--steve" />
+      <img
+        :src="SteveJobs"
+        class="--img--steve"
+        alt="Imagem mostrando o a fisonomia do 
+fundador da Apple Steve Jobs"
+      />
 
       <div class="descricao-steve">
         <h1>Lorem ipsum</h1>
@@ -20,7 +25,7 @@
           voluptatibus quibusdam nisi. Temporibus esse<br />
           ipsa tempore aut at cum nisi quasi.
         </p>
-        <BtnGloobal background="#ed2f5d" label="VER MAIS" />
+        <BtnGlobal background="#ed2f5d" label="VER MAIS" class="button" />
       </div>
     </div>
 
@@ -42,22 +47,26 @@
           voluptatibus quibusdam nisi. Temporibus esse<br />
           ipsa tempore aut at cum nisi quasi.
         </p>
-        <BtnGloobal background="#ed2f5d" label="VER MAIS" />
+        <BtnGlobal background="#ed2f5d" label="VER MAIS" class="button" />
       </div>
 
-      <img :src="ChrisGardner" class="--img--ChrisGardner" />
+      <img
+        :src="ChrisGardner"
+        class="--img--ChrisGardner"
+        alt="Imagem mostrando a fisonomia do grande empresário norte-americano Christian Grandne"
+      />
     </div>
   </div>
 </template>
 
 
 <script>
-import BtnGloobal from "./BtnGloobal.vue";
+import BtnGlobal from "./btnGlobal.vue";
 
 export default {
   name: "DestaquesDeHomeView",
   components: {
-    BtnGloobal,
+    BtnGlobal,
   },
   data() {
     return {
@@ -127,6 +136,11 @@ export default {
   text-align: right;
 }
 
+.button:hover {
+  transition: 0.2s;
+  font-size: 13px;
+}
+
 h1 {
   font-size: 42px;
   padding: 0px 0px 40px;
@@ -137,7 +151,7 @@ p {
 }
 
 .linha {
-  width: calc(120% - 12vh);
+  width: calc(120% - 10vh);
   border-bottom: 2px solid #ed2f5d;
 }
 </style>

@@ -7,7 +7,7 @@
 
     <div>
       <router-link to="DadosDeContato">
-        <BtnGloobal label="Abra sua Conta" class="btn"/>
+        <BtnGlobal label="Abra sua Conta" class="btn" />
       </router-link>
     </div>
   </div>
@@ -15,12 +15,12 @@
 
 
 <script>
-import BtnGloobal from "./BtnGloobal.vue";
+import BtnGlobal from "./btnGlobal.vue";
 
 export default {
   name: "InvestirEsobreVC",
   components: {
-    BtnGloobal,
+    BtnGlobal,
   },
 };
 </script>
@@ -42,6 +42,9 @@ export default {
 
 .btn {
   font-size: 17px;
+}
+.btn:hover {
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.294);
 }
 h1 {
   font-size: 51px;

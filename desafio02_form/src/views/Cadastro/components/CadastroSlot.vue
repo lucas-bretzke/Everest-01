@@ -1,10 +1,10 @@
 <template>
   <main>
     <nav id="navbar-cadastro">
-      <img
-        id="seta-direcional-esquerda"
-        src="/img/icon2.png"
+      <font-awesome-icon
+        icon="fa-solid fa-arrow-left"
         v-on:click="previousPage"
+        class="ic-arrow-left"
       />
       <h4 id="title-nav">FORMULÁRIO</h4>
     </nav>
@@ -15,7 +15,11 @@
         <!-- <button id="continuar-button" v-on:click="nextPage">Continuar</button> -->
       </div>
 
-      <img id="img-de-cadastro" :src="ImgDeCadastro" />
+      <img
+        id="img-de-cadastro"
+        :src="ImgDeCadastro"
+        alt="Imagem de uma mulher segurando um celular"
+      />
     </section>
   </main>
 </template>
@@ -25,9 +29,15 @@ export default {
   name: "CadastroSlot",
 
   props: {
-    previousPageUrl: String,
-    nextPageUrl: String,
-    defaultProgressionBarState: Number,
+    previousPageUrl: {
+      type: String,
+    },
+    nextPageUrl: {
+      type: String,
+    },
+    defaultProgressionBarState: {
+      type: Number,
+    },
   },
 
   data() {
@@ -36,10 +46,10 @@ export default {
     };
   },
   methods: {
-    nextPage: function () {
+    nextPage () {
       this.$router.push(this.nextPageUrl);
     },
-    previousPage: function () {
+    previousPage() {
       this.$router.push(this.previousPageUrl);
     },
   },
@@ -76,12 +86,18 @@ main {
   background-color: #ed2f5d;
 }
 
-#seta-direcional-esquerda {
-  width: 20px;
-  height: auto;
+.ic-arrow-left {
+  width: 22px;
+  height: 22px;
+
+  padding: 5px;
   margin-left: 10px;
 
+  border-radius: 50%;
   cursor: pointer;
+}
+.ic-arrow-left:hover {
+  background-color: rgba(255, 255, 255, 0.32);
 }
 
 #title-nav {
@@ -130,15 +146,6 @@ input {
 
   display: flex;
   flex-direction: column;
-}
-
-#img-de-cadastro {
-  width: auto;
-  height: calc(100vh - 44px);
-
-  padding: 0px;
-  margin: 0px;
-  margin-right: 0px;
 }
 
 #container-global-inputs {

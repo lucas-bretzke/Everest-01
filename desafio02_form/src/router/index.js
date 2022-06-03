@@ -17,12 +17,12 @@ const routes = [
 
     component: () => import('../views/Login/LoginEmail')
   },
-{
-path: '/LoginPassword',
-name: 'LoginPassword',
+  {
+    path: '/LoginPassword',
+    name: 'LoginPassword',
 
-component: () => import('../views/Login/LoginPassword')
-},
+    component: () => import('../views/Login/LoginPassword')
+  },
 
   {
     path: '/DadosDeContato',
