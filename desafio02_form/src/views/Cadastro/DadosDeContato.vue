@@ -330,8 +330,8 @@ input {
   position: fixed;
   width: 17px;
   height: 17px;
-  margin-left: 11%;
-  margin-top: 2.5%;
+  margin-left: 170px;
+  margin-top: 38px;
 }
 
 h1 {
