@@ -23,7 +23,7 @@
 
 
 <script>
-import BtnGlobal from "./BtnGlobal.vue";
+import BtnGlobal from "./BtnGlobal";
 
 export default {
   name: "BannerHome",
