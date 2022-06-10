@@ -28,7 +28,7 @@
             />
 
             <label for="Cep">Cep</label>
-            <input v-model="cep"  name="cpf" placeholder="Cpf" />
+            <input v-model="cep" name="cpf" placeholder="Cpf" />
           </div>
 
           <div class="container-inputs">
@@ -110,19 +110,6 @@ export default {
       birthdate: this.$route.params.toSendDice[4],
       checkboxEmail: this.$route.params.toSendDice[5],
     };
-  },
-  computed: {
-    // bodyOpacity() {
-    //   return {
-    //     opacity: this.show_modal ? ".4" : "1" - ModalCadastro
-    //   };
-    // }, 
-     modalOpacity() {
-       return {
-         transition: "2s"
-        //  opacity: this.show_modal ? "1" : "1",
-       };
-     },
   },
   methods: {
     created() {
