@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView'
+import UsersList from '../views/Cadastro/ListingScreen/UsersList.vue'
+// import CreateUser from '../views/Register.vue'
+// import UserDetails from '../views/UserDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -41,7 +44,23 @@ const routes = [
     name: 'CadastroFinalizado',
 
     component: () => import('../views/Cadastro/CadastroFinalizado')
-  }
+  },
+  ////listagem Screen////
+  {
+    path: '/UsersList',
+    name: 'UsersList',
+    component: UsersList
+  },
+  // {
+  //   path: '/register',
+  //   name: 'cadastro',
+  //   component: CreateUser
+  // },
+  // {
+  //   path: '/users/:id',
+  //   name: 'userDetails',
+  //   component: UserDetails
+  // }
 ]
 
 const router = new VueRouter({
