@@ -151,7 +151,7 @@ export default {
       type: String,
     },
   },
-  emits: ["hfullName"],
+  // emits: ["hfullName"],
   methods: {
     showDadosDeContato() {
       (this.dados_de_contato = true), (this.dados_pessoais = false);
@@ -164,7 +164,7 @@ export default {
       this.$emit("onLeftButtonClick");
     },
     rightButtonClick() {
-      console.log("Recebimento do evento on-right-button-click");
+      this.$emit("onRightButtonClick");
     },
   },
 };

@@ -124,7 +124,7 @@ import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "./components/CadastroSlot";
 
 import useVuelidate from "@vuelidate/core";
-import { required, email, sameAs } from "@vuelidate/validators";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "DadosDeContato",
@@ -160,8 +160,8 @@ export default {
   validations() {
     return {
       fullName: { required },
-      email: { required, email },
-      confirmEml: { required, confirmEml: sameAs(this.email) },
+      email: { required },
+      confirmEml: { required },
       cpf: { required },
       cellphone: { required },
       birthdate: { required },

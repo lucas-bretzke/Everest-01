@@ -4,7 +4,6 @@
     nextPageUrl="CadastroFinalizado"
     :current-state="2"
     @onEmailSmsIcon="emailSmsIcon"
-    :style="bodyOpacity"
   >
     <template #Center>
       <form id="conteudo-principal">
@@ -20,10 +19,9 @@
           <div class="container-inputs">
             <label for="pais one reside">País onde reside</label>
             <input
-              required
               v-model="country"
+              required
               type="email"
-              name="nome"
               placeholder="Digite seu E-mail"
             />
 
@@ -34,19 +32,17 @@
           <div class="container-inputs">
             <label for="Cidade">Cidade</label>
             <input
-              required
               v-model="city"
+              required
               type="text"
-              name="nome"
               placeholder="Confirmar e-mail"
             />
 
             <label id="" for="nome">Endereço</label>
             <input
-              required
               v-model="address"
+              required
               type="text"
-              name="nome"
               placeholder="celular"
             />
           </div>
@@ -54,18 +50,26 @@
         <div class="input-numero-tel">
           <label id="label-numero" for="numero">Número</label>
           <input
-            required
             v-model="number"
+            required
             type="text"
             placeholder="Digite seu número"
           />
         </div>
       </form>
 
-      <button id="continuar-button" v-on:click="showModal">Continuar</button>
+      <button
+        id="continuar-button"
+        v-on:click="
+          showModal();
+          checkFrom();
+        "
+      >
+        Continuar
+      </button>
       <ModalCadastro
         v-show="show_modal"
-        @onLeftButtonClick="lefttButtonClick"
+        @onLeftButtonClick="closeModal()"
         :fullName="fullName"
         :cellphone="cellphone"
         :cpf="cpf"
@@ -88,6 +92,7 @@
 import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "./components/CadastroSlot.vue";
 import ModalCadastro from "./components/ModalCadastro.vue";
+import { required } from "@vuelidate/validators";
 
 export default {
   name: "DadosPessoais",
@@ -99,7 +104,7 @@ export default {
 
   data() {
     return {
-      checked: true,
+      // checked: true,
       ImgDeCadastro: "/img/img-tela-cadastro.png",
       show_modal: false,
 
@@ -109,6 +114,16 @@ export default {
       cellphone: this.$route.params.toSendDice[3],
       birthdate: this.$route.params.toSendDice[4],
       checkboxEmail: this.$route.params.toSendDice[5],
+    };
+  },
+
+  validations() {
+    return {
+      country: { required },
+      cep: { required },
+      city: { required },
+      address: { required },
+      number: { required },
     };
   },
   methods: {
@@ -122,14 +137,18 @@ export default {
       );
     },
     showModal() {
-      this.show_modal = true;
-      console.log(this.$route.params.toSendDice);
+      if (
+        this.country &&
+        this.cep &&
+        this.city &&
+        this.address &&
+        this.number
+      ) {
+        this.show_modal = true;
+      }
     },
     closeModal() {
       this.show_modal = false;
-    },
-    lefttButtonClick() {
-      this.closeModal();
     },
   },
 };
@@ -171,5 +190,6 @@ p {
   border: 1px solid rgba(105, 105, 105, 0.77);
   background-color: white;
   box-shadow: 2px 2px 5px rgb(75, 75, 75);
+  z-index: 2;
 }
 </style>

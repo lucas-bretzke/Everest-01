@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: '/CadastroFinalizado',
-    name: 'Cadastro Finalizado',
+    name: 'CadastroFinalizado',
 
     component: () => import('../views/Cadastro/CadastroFinalizado')
   }
