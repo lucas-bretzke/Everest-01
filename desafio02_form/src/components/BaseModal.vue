@@ -15,7 +15,7 @@
       </button>
 
       <router-link to="CadastroFinalizado">
-        <button class="right-button" v-on:click="onRightButtonClick">
+        <button class="right-button">
           {{ rightButtonTitle }}
         </button>
       </router-link>
@@ -45,9 +45,6 @@ export default {
   methods: {
     onLeftButtonClick() {
       this.$emit("onLeftButtonClick");
-    },
-    onRightButtonClick() {
-      this.$emit("onRightButtonClick");
     },
   },
 };
