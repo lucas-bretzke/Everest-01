@@ -164,6 +164,8 @@ export default {
         this.valido
       ) {
         this.addNewUser();
+        this.$router.push({name: "UsersList"})
+        alert("Usuario cadastrado com Sucesso");
       }
     },
 
