@@ -5,11 +5,7 @@
     :current-state="1"
   >
     <template #Center>
-      <form
-        action=""
-        v-on:submit.prevent="checkForm"
-        class="conteudo-principal"
-      >
+      <form class="conteudo-principal">
         <ProgressionBar :currentState="1" />
         <h1>Seja bem-vindo</h1>
         <h2>Dados de contato</h2>
@@ -46,7 +42,6 @@
               type="text-box"
               placeholder="Digite seu Cpf aqui"
             />
-
             <div v-show="!pendente" :style="messageType" class="msg-error-cpf">
               <span v-if="valido"> CPF valido </span>
               <span v-else>CPF inválido </span>
@@ -123,16 +118,12 @@
 import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "./components/CadastroSlot";
 
-import useVuelidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
-
 export default {
   name: "DadosDeContato",
   components: {
     ProgressionBar,
     CadastroSlot,
   },
-  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       ImgDeCadastro: "/img/img-tela-cadastro.png",
@@ -156,16 +147,6 @@ export default {
         color: this.valido ? "green" : "red",
       };
     },
-  },
-  validations() {
-    return {
-      fullName: { required },
-      email: { required },
-      confirmEml: { required },
-      cpf: { required },
-      cellphone: { required },
-      birthdate: { required },
-    };
   },
 
   methods: {
