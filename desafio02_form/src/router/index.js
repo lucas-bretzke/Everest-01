@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView'
 import UsersList from '../views/Cadastro/ListingScreen/UsersList.vue'
-// import CreateUser from '../views/Register.vue'
+import RegisterUser from '../views/Cadastro/ListingScreen/RegisterUser.vue'
 // import UserDetails from '../views/UserDetails.vue'
 
 Vue.use(VueRouter)
@@ -51,11 +51,11 @@ const routes = [
     name: 'UsersList',
     component: UsersList
   },
-  // {
-  //   path: '/register',
-  //   name: 'cadastro',
-  //   component: CreateUser
-  // },
+  {
+    path: '/RegisterUser',
+    name: 'RegisterUser',
+    component: RegisterUser
+  },
   // {
   //   path: '/users/:id',
   //   name: 'userDetails',
