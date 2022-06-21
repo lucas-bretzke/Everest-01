@@ -65,7 +65,7 @@
               v-mask="'(##) ####-####'"
               v-model="cellphone"
               required
-              placeholder="Digite seu numero aqui"
+              placeholder="Digite seu número aqui"
             />
           </div>
         </div>
@@ -103,6 +103,7 @@
         <button
           id="continuar-button"
           v-on:click="
+            validEmail();
             verificarCpf();
             checkForm();
           "
@@ -167,6 +168,9 @@ export default {
     checkForm() {
       this.errors = [];
 
+      if (!this.validEmail(this.email)) {
+        this.errors.push("Utilize um E-mail válido.");
+      }
       if (this.email != this.confirmEml) {
         this.errors.push("Os campos de E-mail são diferentes");
       }
@@ -194,6 +198,11 @@ export default {
           },
         });
       }
+    },
+    validEmail(email) {
+      var re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     },
 
     verificarCpf() {
