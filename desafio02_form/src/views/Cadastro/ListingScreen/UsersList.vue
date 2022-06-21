@@ -1,11 +1,8 @@
 <template>
   <main>
-    <NavbarListagem />
-    <HeaderListagem />
+    <TopbarListagem />
     <div class="container-listagem">
-      <button class="cadastrar-usuario" v-on:click="getUser()">
-        Cadastrar novo usuário
-      </button>
+      <button class="cadastrar-usuario">Cadastrar novo usuário</button>
       <div class="cpf-name">
         <h5 class="content-cpf">CPF</h5>
         <h5>NOME COMPLETO</h5>
@@ -16,69 +13,89 @@
           <li class="content-name">{{ user.fullname }}</li>
           <li><font-awesome-icon icon="fa-solid fa-eye" class="ic-eye" /></li>
         </ul>
+        <!-- <ul v-for="user in dataUsers" :key="user.id">
+          <li class="content-name">{{ user.name }}</li>
+          <li class="content-name">{{ user.fullname }}</li>
+          <li><font-awesome-icon icon="fa-solid fa-eye" class="ic-eye" /></li>
+        </ul> -->
       </div>
-      <div id="testandoP"></div>
     </div>
+
+    <jw-pagination
+      :pageSize="4"
+      :maxPages="4"
+      :items="exampleItems"
+      @changePage="onChangePage"
+      class="jw-pagination"
+    ></jw-pagination>
+    <!-- :styles="customStyles" -->
   </main>
 </template>
 
-<script>
+// <script>
 import axios from "axios";
+import TopbarListagem from "../components/TopbarListagem.vue";
 
-import NavbarListagem from "../components/NavbarListagem.vue";
-import HeaderListagem from "../components/HeaderListagem.vue";
-// import "./teste.js";
+const exampleItems = [...Array(10).keys()].map((i) => ({
+  id: i + 1,
+  fullname: "user.cpf " + (i + 1),
+}));
 
 export default {
   name: "UsersList",
   components: {
-    NavbarListagem,
-    HeaderListagem,
+    TopbarListagem,
   },
   data() {
     return {
-      dataUsers: [],
       url: "http://localhost:8080/api/users",
+      dataUsers: [],
+      qty: "",
+      exampleItems,
+      pageOfItems: [],
     };
   },
   methods: {
-    async getUser() {
+    goCadastrar() {
+      this.$router.push({ name: "DadosDeContato" });
+    },
+    // async getUser() {
+    //   try {
+    //     const response = await axios.get(this.url);
+    //     this.dataUsers = response.data.users;
+    //     console.log(this.dataUsers);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
+    async onChangePage() {
       try {
         const response = await axios.get(this.url);
+        this.qty = this.dataUsers.length;
         this.dataUsers = response.data.users;
-        console.log(this.dataUsers);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async addNewUser() {
-      // const newUser = {
-      //   fullname: "Lucas bretzke",
-      //   cpf: "124.472.219-75",
-      //   phone: "80986882515",
-      //   email: "hvlobos@mail.com",
-      // };
-      try {
-        await axios.post(this.url, {
-          fullname: "Lucas bretzke",
-          cpf: "124.472.219-75",
-          phone: "80986882515",
-          email: "hvlobos@mail.com",
-        });
-        console.log(this.dataUsers);
+        // this.dataUsers = dataUsers;
+        console.log(
+          response.data,
+          this.dataUsers,
+          this.dataUsers.length,
+          this.qty
+        );
       } catch (error) {
         console.log(error);
       }
     },
   },
   async created() {
-    await this.addNewUser();
     // await this.getUser();
   },
 };
 </script>
 
 <style scoped>
+main {
+  width: 100vw;
+  height: 100vh;
+}
 section {
   display: flex;
 }
@@ -91,7 +108,7 @@ section {
 .cadastrar-usuario {
   position: static;
   margin: 10px 0px;
-  margin-left: 556px;
+  margin-left: 552px;
   padding: 11px 24px;
   font-weight: bold;
   border: none;
@@ -146,9 +163,17 @@ ul li {
   height: 17px;
   padding: 2px;
   cursor: pointer;
+  /* transition: 0.3s; */
 }
 .ic-eye:hover {
-  width: 18px;
-  box-shadow: 3px 3px 3px solid red;
+  transform: translateZ(10px) scale(1.3);
+}
+
+.jw-pagination {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 </style>
