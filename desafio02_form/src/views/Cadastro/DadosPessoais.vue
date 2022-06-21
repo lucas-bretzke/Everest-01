@@ -189,7 +189,7 @@ p {
   border-radius: 5px;
   border: 1px solid rgba(105, 105, 105, 0.77);
   background-color: white;
-  box-shadow: 2px 2px 5px rgb(75, 75, 75);
+  box-shadow: 0px 0px 1px 1100px rgba(0, 0, 0, 0.239) ;
   z-index: 2;
 }
 </style>
