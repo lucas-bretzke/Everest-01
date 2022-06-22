@@ -7,7 +7,7 @@
         <h1>Abra sua conta.</h1>
         <h1>É grátis.</h1>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-        <router-link to="UsersList">
+        <router-link to="ListagenScreen">
           <BtnGlobal label="Comece agora" class="button-cadastrar" />
         </router-link>
       </div>
