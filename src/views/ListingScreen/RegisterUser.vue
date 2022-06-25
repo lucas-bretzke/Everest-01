@@ -252,7 +252,6 @@ input {
   padding: 11px;
   border-radius: 4px;
   border: 1px solid black;
-  /* outline: none; */
 }
 
 .checkbox-container {
@@ -320,7 +319,6 @@ p {
   font-size: 13px;
   color: red;
   border-radius: 5px;
-  /* border-bottom: 2px solid black; */
   border-left: 2px solid black;
   border-right: 2px solid black;
   list-style-type: none;
@@ -361,7 +359,6 @@ button {
   background-color: #ed2f5d;
 }
 .LeftButton:hover {
-  /* padding: 13px 26px; */
   transform: translateZ(10px) scale(1.1);
 }
 .RighttButton {

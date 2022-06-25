@@ -65,15 +65,7 @@ export default {
     goCadastrar() {
       this.$router.push({ name: "DadosDeContato" });
     },
-    // async getUser() {
-    //   try {
-    //     const response = await axios.get(this.url);
-    //     this.dataUsers = response.data.users;
-    //     console.log(this.dataUsers);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
+  
     onChangePage(currentItens) {
       this.currentItens = currentItens;
     },
@@ -83,9 +75,6 @@ export default {
         id: i + 1,
       }));
     },
-  },
-  async created() {
-    // await this.getUser();
   },
   async mounted() {
     const response = await axios.get(this.url);

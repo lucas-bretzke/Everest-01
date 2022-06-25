@@ -218,8 +218,6 @@ export default {
 
 .btns-contato-pessoal:focus {
   color: black;
-  /* font-weight: bold; */
-  /*background-color: white; */
 }
 
 #content-modal {

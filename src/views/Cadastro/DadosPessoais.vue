@@ -109,7 +109,6 @@ export default {
 
   data() {
     return {
-      // checked: true,
       ImgDeCadastro: "/img/img-tela-cadastro.png",
       show_modal: false,
 
