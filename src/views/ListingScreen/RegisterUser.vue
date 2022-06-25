@@ -119,7 +119,7 @@ export default {
     return {
       fullName: "",
       email: "",
-      confirmEml: "",
+      confirmEmail: "",
       cellphone: "",
       birthdate: "",
       cpf: "",
@@ -146,7 +146,7 @@ export default {
       if (!this.fullName) {
         this.errors.push("O nome deve ser preenchido");
       }
-      if (this.email != this.confirmEml) {
+      if (this.email != this.confirmEmail) {
         this.errors.push("Os campos de E-mail são diferentes");
       }
       if (!this.cellphone) {
@@ -160,7 +160,7 @@ export default {
         this.email &&
         this.cellphone &&
         this.birthdate &&
-        this.email === this.confirmEml &&
+        this.email === this.confirmEmail &&
         this.valido
       ) {
         this.addNewUser();
