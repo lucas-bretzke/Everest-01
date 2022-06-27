@@ -48,7 +48,7 @@
         <div class="container-inputs">
           <label for="confirmEml">Confirmar e-mail</label>
           <input
-            v-model="confirmEml"
+            v-model="confirmEmail"
             name="confirmEml"
             type="text-box"
             placeholder="E-mail aqui"
