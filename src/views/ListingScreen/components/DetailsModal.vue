@@ -55,7 +55,6 @@ export default {
   methods: {
     closeModal() {
       this.$emit("closeModal");
-      console.log(this.fullname);
     },
   },
 };
