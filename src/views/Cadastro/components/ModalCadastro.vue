@@ -9,13 +9,21 @@
   >
     <template #CenterModal>
       <div class="analise-confirme-dados">
-        <h5>Análise e confirm os dados inputados no cadastro.</h5>
+        <p>Análise e confirm os dados inputados no cadastro.</p>
 
-        <button v-on:click="showDadosDeContato" class="btns-contato-pessoal">
+        <button
+          v-on:click="showDadosDeContato"
+          :style="btn01"
+          class="btns-contato-pessoal"
+        >
           Contato
         </button>
-        <button v-on:click="showDadosPessoais" class="btns-contato-pessoal">
-          Pessois
+        <button
+          v-on:click="showDadosPessoais"
+          :style="btn02"
+          class="btns-contato-pessoal"
+        >
+          Pessoal
         </button>
       </div>
 
@@ -64,13 +72,13 @@
       </div>
 
       <div v-show="dados_pessoais" id="content-modal">
-        <h4>Dados Pessoais</h4>
+        <h4>Dados pessoais</h4>
 
         <div class="linha-bottom-modal"></div>
 
         <div class="container-dados-de-contato">
           <div class="container-dados">
-            <p>País onde reside</p>
+            <p>País</p>
             <span>{{ country }}</span>
           </div>
           <div class="container-dados">
@@ -85,7 +93,7 @@
             <span>{{ city }}</span>
           </div>
           <div class="container-dados">
-            <p>Numero</p>
+            <p>Número</p>
             <span>{{ number }}</span>
           </div>
         </div>
@@ -101,7 +109,7 @@
 </template>
 
 
-<script>
+ <script>
 import BaseModal from "../../../components/BaseModal.vue";
 
 export default {
@@ -151,7 +159,6 @@ export default {
       type: String,
     },
   },
-  // emits: ["hfullName"],
   methods: {
     showDadosDeContato() {
       (this.dados_de_contato = true), (this.dados_pessoais = false);
@@ -167,6 +174,20 @@ export default {
       this.$emit("onRightButtonClick");
     },
   },
+  computed: {
+    btn01() {
+      return {
+        background: this.dados_de_contato? "white": " rgba(34, 34, 34, 0.897)",
+        color: this.dados_de_contato ? "black" : "white",
+      };
+    },
+    btn02() {
+      return {
+        background: this.dados_pessoais ? "white" : " rgba(34, 34, 34, 0.897)",
+        color: this.dados_pessoais ? "black" : "white",
+      };
+    },
+  },
 };
 </script>
 
@@ -176,25 +197,27 @@ export default {
   margin: 0px 60px;
   margin-top: 40px;
 }
+.analise-confirme-dados p {
+  color: black;
+  font-weight: 650;
+}
 
 .btns-contato-pessoal {
-  padding: 10px 15px;
+  padding: 7px 10px;
   margin-top: 10px;
   margin-right: 10px;
-
   border-radius: 50px;
   border: none;
+  border: 1px solid rgba(105, 105, 105, 0.542);
 
+  font-size: 12px;
   color: white;
   background-color: rgba(34, 34, 34, 0.897);
   cursor: pointer;
 }
 
 .btns-contato-pessoal:focus {
-  font-weight: bold;
   color: black;
-  background-color: white;
-  border: 1px solid rgba(105, 105, 105, 0.542);
 }
 
 #content-modal {

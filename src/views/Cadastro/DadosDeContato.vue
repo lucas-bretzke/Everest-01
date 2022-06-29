@@ -5,11 +5,7 @@
     :current-state="1"
   >
     <template #Center>
-      <form
-        action=""
-        v-on:submit.prevent="checkForm"
-        class="conteudo-principal"
-      >
+      <form @submit.prevent="checkForm()" class="conteudo-principal">
         <ProgressionBar :currentState="1" />
         <h1>Seja bem-vindo</h1>
         <h2>Dados de contato</h2>
@@ -46,9 +42,8 @@
               type="text-box"
               placeholder="Digite seu Cpf aqui"
             />
-
             <div v-show="!pendente" :style="messageType" class="msg-error-cpf">
-              <span v-if="valido"> CPF valido </span>
+              <span v-if="valido"> </span>
               <span v-else>CPF inválido </span>
             </div>
           </div>
@@ -70,7 +65,7 @@
               v-mask="'(##) ####-####'"
               v-model="cellphone"
               required
-              placeholder="Digite seu numero aqui"
+              placeholder="Digite seu número aqui"
             />
           </div>
         </div>
@@ -108,6 +103,7 @@
         <button
           id="continuar-button"
           v-on:click="
+            validEmail();
             verificarCpf();
             checkForm();
           "
@@ -122,7 +118,6 @@
 <script>
 import ProgressionBar from "../../components/ProgressionBar.vue";
 import CadastroSlot from "./components/CadastroSlot";
-
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 
@@ -132,7 +127,6 @@ export default {
     ProgressionBar,
     CadastroSlot,
   },
-  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       ImgDeCadastro: "/img/img-tela-cadastro.png",
@@ -149,6 +143,18 @@ export default {
       valido: false,
     };
   },
+  setup() {
+    return { v$: useVuelidate() };
+  },
+  validations() {
+    return {
+      fullName: { required },
+      email: { required },
+      cpf: { required },
+      cellphone: { required },
+      birthdate: { required },
+    };
+  },
 
   computed: {
     messageType() {
@@ -157,21 +163,14 @@ export default {
       };
     },
   },
-  validations() {
-    return {
-      fullName: { required },
-      email: { required },
-      confirmEml: { required },
-      cpf: { required },
-      cellphone: { required },
-      birthdate: { required },
-    };
-  },
 
   methods: {
     checkForm() {
       this.errors = [];
 
+      if (!this.validEmail(this.email)) {
+        this.errors.push("Utilize um E-mail válido.");
+      }
       if (this.email != this.confirmEml) {
         this.errors.push("Os campos de E-mail são diferentes");
       }
@@ -199,6 +198,11 @@ export default {
           },
         });
       }
+    },
+    validEmail(email) {
+      var re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     },
 
     verificarCpf() {
@@ -230,7 +234,7 @@ const checkAll = (cpf) => checks.map((f) => f(cpf)).every((r) => !!r);
 
 
 
-<style>
+<style  scoped>
 .conteudo-principal {
   max-width: 450px;
   min-width: 450px;

@@ -138,8 +138,8 @@ li:hover {
   background-color: #ed2f5d;
 }
 .button-Abra-Sua-Conta:hover {
-  padding: 12px 20px;
-  transition: 0.2s;
+  transition: .3s;
+  transform: translateZ(0px) scale(1.1);
 }
 
 li {

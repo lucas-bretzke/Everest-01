@@ -31,7 +31,7 @@ export default {
   height: 22px;
   padding: 5px;
 
-  top: 15px;
+  top: 6px;
   left: 15px;
   position: fixed;
 

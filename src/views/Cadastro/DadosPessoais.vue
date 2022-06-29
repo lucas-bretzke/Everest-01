@@ -22,11 +22,16 @@
               v-model="country"
               required
               type="email"
-              placeholder="Digite seu E-mail"
+              placeholder="Input text"
             />
 
             <label for="Cep">Cep</label>
-            <input v-model="cep" name="cpf" placeholder="Cpf" />
+            <input
+              placeholder="##.###-###"
+              type="text"
+              v-mask="'##.###-###'"
+              v-model="cep"
+            />
           </div>
 
           <div class="container-inputs">
@@ -35,7 +40,7 @@
               v-model="city"
               required
               type="text"
-              placeholder="Confirmar e-mail"
+              placeholder="Input text"
             />
 
             <label id="" for="nome">Endereço</label>
@@ -43,7 +48,7 @@
               v-model="address"
               required
               type="text"
-              placeholder="celular"
+              placeholder="Input text"
             />
           </div>
         </div>
@@ -53,7 +58,7 @@
             v-model="number"
             required
             type="text"
-            placeholder="Digite seu número"
+            placeholder="Input number"
           />
         </div>
       </form>
@@ -104,7 +109,6 @@ export default {
 
   data() {
     return {
-      // checked: true,
       ImgDeCadastro: "/img/img-tela-cadastro.png",
       show_modal: false,
 
@@ -189,7 +193,7 @@ p {
   border-radius: 5px;
   border: 1px solid rgba(105, 105, 105, 0.77);
   background-color: white;
-  box-shadow: 2px 2px 5px rgb(75, 75, 75);
+  box-shadow: 0px 0px 1px 1100px rgba(0, 0, 0, 0.239);
   z-index: 2;
 }
 </style>
