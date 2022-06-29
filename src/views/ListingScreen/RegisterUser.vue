@@ -67,7 +67,7 @@
 
       <div id="calendario">
         <label>Data de nascimento</label>
-        <input v-model="birthdate" type="date" />
+        <input v-model="birthDate" type="date" />
       </div>
 
       <div class="opcionais-container">
@@ -121,7 +121,7 @@ export default {
       email: "",
       confirmEmail: "",
       cellphone: "",
-      birthdate: "",
+      birthDate: "",
       cpf: "",
       checkboxEmail: false,
       errors: [],
@@ -152,19 +152,19 @@ export default {
       if (!this.cellphone) {
         this.errors.push("O numero deve ser preenchido");
       }
-      if (!this.birthdate) {
+      if (!this.birthDate) {
         this.errors.push("O campo de data deve ser preenchido");
       }
       if (
         this.fullName &&
         this.email &&
         this.cellphone &&
-        this.birthdate &&
+        this.birthDate &&
         this.email === this.confirmEmail &&
         this.valido
       ) {
         this.addNewUser();
-        alert("Usuario cadastrado com Sucesso");
+        alert("Usuário cadastrado com Sucesso");
         this.$router.push({ name: "UsersList" });
       }
     },
@@ -178,8 +178,10 @@ export default {
       const payload = {
         fullname: this.fullName,
         cpf: this.cpf,
-        phone: this.cellphone,
+        cellphone: this.cellphone,
         email: this.email,
+        confirmEmail: this.confirmEmail,
+        birthDate: this.birthDate
       };
       try {
         await axios.post(this.url, payload);
