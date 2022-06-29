@@ -2,17 +2,23 @@
   <main>
     <TopbarListagem :btn2="true" />
     <div class="container-listagem">
-      <button class="cadastrar-usuario">Cadastrar novo usuário</button>
+      <button class="cadastrar-usuario" @click="goCadastrar()">
+        Cadastrar novo usuário
+      </button>
       <div class="cpf-name">
         <h5 class="content-cpf">CPF</h5>
         <h5>NOME COMPLETO</h5>
       </div>
       <div id="renderResult">
-        <ul v-for="user in currentItens" :key="user.id">
+        <ul v-for="user in currentItens" :key="user.message">
           <li class="content-cpf">{{ user.cpf }}</li>
           <li class="content-name">{{ user.fullname }}</li>
-          <li @click="openModal()">
-            <font-awesome-icon icon="fa-solid fa-eye" class="ic-eye" />
+          <li @click="openModal(user)">
+            <font-awesome-icon
+              icon="fa-solid fa-eye"
+              class="ic-eye"
+              ref="selectedItem"
+            />
           </li>
         </ul>
       </div>
@@ -28,19 +34,19 @@
       <div class="contain-all-information">
         <div class="informations">
           <div class="information-content">
-            <label>Cpf</label> <span> 124.472.219-75 </span>
+            <label>Cpf</label> <span> </span>
           </div>
           <div class="information-content">
-            <label>Nome completo</label> <span>Lucas Bretzke</span>
+            <label>Nome completo</label> <span>nao tem nada</span>
           </div>
           <div class="information-content">
-            <label>Nascimento</label> <span>28/10/2003</span>
+            <label>Nascimento</label> <span>nao tem nada</span>
           </div>
         </div>
 
         <div class="informations">
           <div class="information-content">
-            <label>Celular</label> <span> 47 99136-4809 </span>
+            <label>Celular</label> <span>nao tem nada</span>
           </div>
           <div class="information-content">
             <label>Contato</label>
@@ -103,16 +109,17 @@ export default {
       url: "http://localhost:8080/api/users",
       dataUsers: [],
       currentItens: [],
-      informationModal: true,
+      informationModal: false,
       customLabels,
+
       customStyles,
+      selectedItem: '',
     };
   },
   methods: {
     goCadastrar() {
-      this.$router.push({ name: "DadosDeContato" });
+      this.$router.push({ name: "RegisterUser" });
     },
-
     onChangePage(currentItens) {
       this.currentItens = currentItens;
     },
@@ -121,9 +128,9 @@ export default {
         id: i + 1,
       }));
     },
-    openModal() {
+   
+    openModal(user) {
       this.informationModal = true;
-      
     },
     closeModal() {
       this.informationModal = false;
