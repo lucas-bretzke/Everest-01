@@ -1,8 +1,8 @@
 <template>
   <main>
-    <TopbarListagem :btn2="true" />
+    <TopbarListagem :styleBtnListing="true" />
     <div class="container-listagem">
-      <button class="cadastrar-usuario" @click="goCadastrar()">
+      <button class="cadastrar-usuario" @click="registerUser()">
         Cadastrar novo usuário
       </button>
       <div class="cpf-name">
@@ -37,6 +37,7 @@
       :maxPages="4"
       :items="dataUsers"
       @changePage="onChangePage"
+      class=".pagination li.page-number"
     ></jw-pagination>
   </main>
 </template>
@@ -82,7 +83,7 @@ export default {
     };
   },
   methods: {
-    goCadastrar() {
+    cadastrarUser() {
       this.$router.push({ name: "RegisterUser" });
     },
     
@@ -190,5 +191,15 @@ ul li {
   margin-right: -50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
+}
+ .page-link {
+    padding: 0px 3px;
+    cursor: pointer;
+}
+    .pagination li.page-number  {
+    background-color: white;
+}
+    .pagination li.page-number:hover  {
+    background-color: rgb(156, 156, 156);
 }
 </style>
