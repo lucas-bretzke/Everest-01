@@ -1,8 +1,8 @@
 <template>
   <div>
-    <TopbarListagem :btn1="true" />
+    <TopbarListagem :styleBtnRegister="true" />
 
-    <form action="" v-on:submit.prevent="checkForm" class="form-container">
+    <form action="" v-on:submit.prevent="checkForm()" class="form-container">
       <div class="container-titles">
         <h2>Dados de contato</h2>
         <p>
@@ -37,7 +37,7 @@
             v-model="cpf"
             type="text-box"
             placeholder="Digite seu Cpf aqui"
-            @keyup.enter="verificarCpf"
+            @keyup.enter="checkCpf"
           />
           <div v-show="!pendente" :style="messageType" class="msg-error-cpf">
             <span v-if="valido"></span>
@@ -90,7 +90,6 @@
         <button
           class="LeftButton"
           v-on:click="
-            verificarCpf();
             checkForm();
           "
         >
@@ -142,6 +141,7 @@ export default {
   methods: {
     checkForm() {
       this.errors = [];
+      this.checkCpf();
 
       if (!this.fullName) {
         this.errors.push("O nome deve ser preenchido");
@@ -169,7 +169,7 @@ export default {
       }
     },
 
-    verificarCpf() {
+    checkCpf() {
       this.valido = validar(this.cpf);
       this.pendente = false;
     },
