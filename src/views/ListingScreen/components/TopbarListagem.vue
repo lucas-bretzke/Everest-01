@@ -6,8 +6,8 @@
     </nav>
     <header>
       <div class="center">
-        <button :class="{ style_btn1: btn1 }" @click="RegisterUsers">CADASTRO</button>
-        <button :class="{ style_btn2: btn2 }" @click="UsersList">LISTAGEM</button>
+        <button :class="{ style_btn1: styleBtnRegister }" @click="RegisterUsers">CADASTRO</button>
+        <button :class="{ style_btn2: styleBtnListing }" @click="UsersList">LISTAGEM</button>
       </div>
     </header>
   </div>
@@ -21,10 +21,10 @@ export default {
     BtnReturn,
   },
   props: {
-    btn1: {
+    styleBtnRegister: {
       type: Boolean,
     },
-    btn2: {
+    styleBtnListing: {
       type: Boolean,
     },
   },
