@@ -183,17 +183,16 @@ ul li {
 
 .jw-pagination {
   list-style-type: none;
-   display: flex!important;
+  display: flex !important;
   width: 100%;
   justify-content: center;
-  font-weight: bold;
-}
-::v-deep .active {
-  color: blue !important;
 }
 ::v-deep .jw-pagination li a {
   cursor: pointer;
   padding: 5px 3px;
+}
+::v-deep .jw-pagination .active:hover {
+  background: black !important;
 }
 ::v-deep .jw-pagination .page-number {
   font-size: 15px;
@@ -206,12 +205,21 @@ ul li {
   background-color: rgba(126, 126, 126, 0.281) !important;
   border-radius: 3px;
 }
+::v-deep .jw-pagination li.first,
+::v-deep .jw-pagination li.last,
+::v-deep .jw-pagination li.previous,
+::v-deep .jw-pagination li.next {
+  font-weight: bold;
+}
+::v-deep .jw-pagination li.first:hover,
+::v-deep .jw-pagination li.last:hover,
+::v-deep .jw-pagination li.previous:hover,
+::v-deep .jw-pagination li.next:hover {
+  transform: translateZ(10px) scale(1.1);
+}
 ::v-deep .jw-pagination .active {
   color: white !important;
   background: black !important;
   border-radius: 3px;
-}
-::v-deep .jw-pagination .active:hover {
-  background: black !important;
 }
 </style>
