@@ -191,9 +191,6 @@ ul li {
   cursor: pointer;
   padding: 5px 3px;
 }
-::v-deep .jw-pagination .active:hover {
-  background: black !important;
-}
 ::v-deep .jw-pagination .page-number {
   font-size: 15px;
   padding: 5px 2px;
@@ -222,4 +219,7 @@ ul li {
   background: black !important;
   border-radius: 3px;
 }
+  ::v-deep .jw-pagination .active:hover {
+    background: black !important;
+  }
 </style>
