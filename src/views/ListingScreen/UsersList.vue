@@ -31,13 +31,14 @@
     />
 
     <jw-pagination
+      :disableDefaultStyles="true"
+      class="jw-pagination"
       :styles="customStyles"
       :labels="customLabels"
       :pageSize="6"
       :maxPages="4"
       :items="dataUsers"
       @changePage="onChangePage"
-      class=".pagination li.page-number"
     ></jw-pagination>
   </main>
 </template>
@@ -58,9 +59,6 @@ const customStyles = {
     display: "inline-block",
     margin: "0px 3px",
   },
-  a: {
-    padding: "3px 3px",
-  },
 };
 
 export default {
@@ -79,14 +77,14 @@ export default {
 
       customStyles,
       selectedItem: "",
-      objectUser: {} ,
+      objectUser: {},
     };
   },
   methods: {
     cadastrarUser() {
       this.$router.push({ name: "RegisterUser" });
     },
-    
+
     onChangePage(currentItens) {
       this.currentItens = currentItens;
     },
@@ -183,23 +181,37 @@ ul li {
   transform: translateZ(10px) scale(1.3);
 }
 
-.pagination {
-  position: absolute;
+.jw-pagination {
   list-style-type: none;
-  top: 640px;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+   display: flex!important;
+  width: 100%;
+  justify-content: center;
   font-weight: bold;
 }
- .page-link {
-    padding: 0px 3px;
-    cursor: pointer;
+::v-deep .active {
+  color: blue !important;
 }
-    .pagination li.page-number  {
-    background-color: white;
+::v-deep .jw-pagination li a {
+  cursor: pointer;
+  padding: 5px 3px;
 }
-    .pagination li.page-number:hover  {
-    background-color: rgb(156, 156, 156);
+::v-deep .jw-pagination .page-number {
+  font-size: 15px;
+  padding: 5px 2px;
+  color: rgb(165, 165, 165);
+  background-color: rgb(255, 255, 255) !important;
+}
+::v-deep .jw-pagination .page-number:hover {
+  color: black;
+  background-color: rgba(126, 126, 126, 0.281) !important;
+  border-radius: 3px;
+}
+::v-deep .jw-pagination .active {
+  color: white !important;
+  background: black !important;
+  border-radius: 3px;
+}
+::v-deep .jw-pagination .active:hover {
+  background: black !important;
 }
 </style>
