@@ -81,7 +81,7 @@ export default {
     };
   },
   methods: {
-    cadastrarUser() {
+    registerUser() {
       this.$router.push({ name: "RegisterUser" });
     },
 
@@ -182,6 +182,7 @@ ul li {
 }
 
 .jw-pagination {
+  margin-top: 40px;
   list-style-type: none;
   display: flex !important;
   width: 100%;
@@ -192,15 +193,15 @@ ul li {
   padding: 5px 3px;
 }
 ::v-deep .jw-pagination .page-number {
-  font-size: 15px;
-  padding: 5px 2px;
+  font-size: 14px;
+  padding: 5px 1px;
   color: rgb(165, 165, 165);
+  border-radius: 4px;
   background-color: rgb(255, 255, 255) !important;
 }
 ::v-deep .jw-pagination .page-number:hover {
   color: black;
   background-color: rgba(126, 126, 126, 0.281) !important;
-  border-radius: 3px;
 }
 ::v-deep .jw-pagination li.first,
 ::v-deep .jw-pagination li.last,
@@ -217,7 +218,6 @@ ul li {
 ::v-deep .jw-pagination .active {
   color: white !important;
   background: black !important;
-  border-radius: 3px;
 }
   ::v-deep .jw-pagination .active:hover {
     background: black !important;
