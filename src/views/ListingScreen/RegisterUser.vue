@@ -58,7 +58,7 @@
           <label for="celular">Telefone</label>
           <input
             type="text-box"
-            v-mask="'(##) ####-####'"
+            v-mask="'(##) # ####-####'"
             v-model="cellphone"
             placeholder="Digite seu numero aqui"
           />
