@@ -17,4 +17,21 @@ const verDig = (pos) => (cpf) => getDV(cpf, pos) === cpf[pos];
 const checks = [is11Len, notAllEquals, onlyNum, verDig(9), verDig(10)];
 const checkAll = (cpf) => checks.map((f) => f(cpf)).every((r) => !!r);
 
-export { validar }
+//Filters
+const phone = (phone) => {
+    return phone.replace(/[^0-9]/g, "")
+        .replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, "($1) $2 $3-$4")
+};
+const truncate = (str, length) => {
+    if (str.length > length) {
+        str = str.substring(0, length) + "...";
+    }
+    return str;
+}
+const cpf = (cpf) => {
+    cpf = cpf.replace(/[^\d]/g, "");
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+}
+
+
+export { validar, phone, truncate, cpf }

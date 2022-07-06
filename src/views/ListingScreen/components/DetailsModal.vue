@@ -26,7 +26,7 @@
       <div class="informations">
         <div class="information-content">
           <label>Celular</label>
-          <span>{{ objectUser.cellphone | phone()  }}</span>
+          <span>{{ objectUser.cellphone | phone() }}</span>
         </div>
         <div class="information-content">
           <label>Contato</label>
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import { phone, truncate, cpf } from "../../../utils/helpers";
+
 export default {
   name: "DetailsModal",
   props: {
@@ -63,21 +65,9 @@ export default {
     },
   },
   filters: {
-    truncate(str, length) {
-      if (str.length > length) {
-        str = str.substring(0, length) + "...";
-      }
-      return str;
-    },
-    cpf(cpf) {
-      cpf = cpf.replace(/[^\d]/g, "");
-      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-    },
-    phone(phone) {
-      return phone
-        .replace(/[^0-9]/g, "")
-        .replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, "($1) $2 $3-$4");
-    },
+    phone,
+    truncate,
+    cpf,
   },
 };
 </script>

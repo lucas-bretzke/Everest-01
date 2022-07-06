@@ -11,7 +11,7 @@
       </div>
       <div id="renderResult">
         <ul v-for="user in currentItens" :key="user.message">
-          <li class="content-cpf">{{ user.cpf }}</li>
+          <li class="content-cpf">{{ user.cpf | cpf }}</li>
           <li class="content-name">{{ user.fullname }}</li>
           <li @click="openModal(user)">
             <font-awesome-icon
@@ -47,6 +47,7 @@
 import axios from "axios";
 import TopbarListagem from "./components/TopbarListagem.vue";
 import DetailsModal from "../ListingScreen/components/DetailsModal.vue";
+import {cpf} from '../../utils/helpers'
 
 const customLabels = {
   first: "<<",
@@ -107,6 +108,9 @@ export default {
     const response = await axios.get(this.url);
     this.dataUsers = response.data.users;
   },
+  filters: {
+    cpf,
+  }
 };
 </script>
 
