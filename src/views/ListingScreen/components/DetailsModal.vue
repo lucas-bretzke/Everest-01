@@ -10,20 +10,23 @@
     <div class="contain-all-information">
       <div class="informations">
         <div class="information-content">
-          <label>Cpf</label> <span>{{ objectUser.cpf }}</span>
+          <label>Cpf</label>
+          <span>{{ objectUser.cpf | cpf() }}</span>
         </div>
         <div class="information-content">
           <label>Nome completo</label>
           <span>{{ objectUser.fullname }}</span>
         </div>
         <div class="information-content">
-          <label>Nascimento</label> <span>{{ objectUser.birthDate }}</span>
+          <label>Nascimento</label>
+          <span>{{ objectUser.birthDate }}</span>
         </div>
       </div>
 
       <div class="informations">
         <div class="information-content">
-          <label>Celular</label> <span>{{ objectUser.cellphone }}</span>
+          <label>Celular</label>
+          <span>{{ objectUser.cellphone | phone()  }}</span>
         </div>
         <div class="information-content">
           <label>Contato</label>
@@ -39,7 +42,9 @@
         </div>
         <div class="information-content">
           <label>Email</label>
-          <span class="modal-email">{{objectUser.email}}</span>
+          <span class="modal-email">{{
+            objectUser.email | truncate("26")
+          }}</span>
         </div>
       </div>
     </div>
@@ -55,6 +60,23 @@ export default {
   methods: {
     closeModal() {
       this.$emit("closeModal");
+    },
+  },
+  filters: {
+    truncate(str, length) {
+      if (str.length > length) {
+        str = str.substring(0, length) + "...";
+      }
+      return str;
+    },
+    cpf(cpf) {
+      cpf = cpf.replace(/[^\d]/g, "");
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    },
+    phone(phone) {
+      return phone
+        .replace(/[^0-9]/g, "")
+        .replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, "($1) $2 $3-$4");
     },
   },
 };
