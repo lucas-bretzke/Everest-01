@@ -1,4 +1,4 @@
-ListingScreen
+
 # Everest
 
 ## Project setup
