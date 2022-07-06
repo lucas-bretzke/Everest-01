@@ -1,8 +1,8 @@
 <template>
   <div>
-    <TopbarListagem :btn1="true" />
+    <TopbarListagem :styleBtnRegister="true" />
 
-    <form action="" v-on:submit.prevent="checkForm" class="form-container">
+    <form action="" v-on:submit.prevent="checkForm()" class="form-container">
       <div class="container-titles">
         <h2>Dados de contato</h2>
         <p>
@@ -37,7 +37,7 @@
             v-model="cpf"
             type="text-box"
             placeholder="Digite seu Cpf aqui"
-            @keyup.enter="verificarCpf"
+            @keyup.enter="checkCpf"
           />
           <div v-show="!pendente" :style="messageType" class="msg-error-cpf">
             <span v-if="valido"></span>
@@ -58,7 +58,7 @@
           <label for="celular">Telefone</label>
           <input
             type="text-box"
-            v-mask="'(##) ####-####'"
+            v-mask="'(##) # ####-####'"
             v-model="cellphone"
             placeholder="Digite seu numero aqui"
           />
@@ -67,7 +67,7 @@
 
       <div id="calendario">
         <label>Data de nascimento</label>
-        <input v-model="birthdate" type="date" />
+        <input v-model="birthDate" type="date" />
       </div>
 
       <div class="opcionais-container">
@@ -90,7 +90,6 @@
         <button
           class="LeftButton"
           v-on:click="
-            verificarCpf();
             checkForm();
           "
         >
@@ -121,7 +120,7 @@ export default {
       email: "",
       confirmEmail: "",
       cellphone: "",
-      birthdate: "",
+      birthDate: "",
       cpf: "",
       checkboxEmail: false,
       errors: [],
@@ -142,6 +141,7 @@ export default {
   methods: {
     checkForm() {
       this.errors = [];
+      this.checkCpf();
 
       if (!this.fullName) {
         this.errors.push("O nome deve ser preenchido");
@@ -152,24 +152,24 @@ export default {
       if (!this.cellphone) {
         this.errors.push("O numero deve ser preenchido");
       }
-      if (!this.birthdate) {
+      if (!this.birthDate) {
         this.errors.push("O campo de data deve ser preenchido");
       }
       if (
         this.fullName &&
         this.email &&
         this.cellphone &&
-        this.birthdate &&
+        this.birthDate &&
         this.email === this.confirmEmail &&
         this.valido
       ) {
         this.addNewUser();
-        alert("Usuario cadastrado com Sucesso");
+        alert("Usuário cadastrado com Sucesso");
         this.$router.push({ name: "UsersList" });
       }
     },
 
-    verificarCpf() {
+    checkCpf() {
       this.valido = validar(this.cpf);
       this.pendente = false;
     },
@@ -178,8 +178,10 @@ export default {
       const payload = {
         fullname: this.fullName,
         cpf: this.cpf,
-        phone: this.cellphone,
+        cellphone: this.cellphone,
         email: this.email,
+        confirmEmail: this.confirmEmail,
+        birthDate: this.birthDate
       };
       try {
         await axios.post(this.url, payload);
